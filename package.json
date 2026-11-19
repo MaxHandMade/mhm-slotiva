@@ -1,0 +1,29 @@
+{
+	"name": "mhm-slotiva",
+	"version": "1.1.0",
+	"private": true,
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"build": "wp-scripts build",
+		"start": "wp-scripts start",
+		"test:js": "wp-scripts test-unit-js --passWithNoTests",
+		"lint:js": "wp-scripts lint-js src-react/"
+	},
+	"devDependencies": {
+		"@testing-library/dom": "^10.4.2",
+		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/react": "^16.3.3",
+		"@testing-library/user-event": "^14.6.9",
+		"@wordpress/api-fetch": "^8.1.0",
+		"@wordpress/data": "^11.1.0",
+		"@wordpress/i18n": "^7.1.0",
+		"@wordpress/notices": "^6.1.0",
+		"@wordpress/scripts": "^30.0",
+		"dom-accessibility-api": "^0.7.1",
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"@wordpress/date": "^6.1.0",
+		"@wordpress/hooks": "^4.57.0"
+	}
+}

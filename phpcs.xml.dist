@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<ruleset name="mhm-slotiva">
+	<description>MHM Slotiva kodlama standardı. Koşu: vendor/bin/phpcs</description>
+
+	<file>.</file>
+
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/build/*</exclude-pattern>
+	<exclude-pattern>*/languages/*</exclude-pattern>
+	<exclude-pattern>*/.superpowers/*</exclude-pattern>
+	<exclude-pattern>*/docs/*</exclude-pattern>
+	<!-- Yerel geliştirme yığını (sarmalayıcı yapılandırma, mu-plugin); pakete girmez. -->
+	<exclude-pattern>*/docker/*</exclude-pattern>
+	<!-- Geliştirme/CI araçları (kapılar): pakete girmez (bin/lite-manifest.txt ve ZIP'te bin/ yok); Rentiva Lite phpcs.xml ile aynı. -->
+	<exclude-pattern>*/bin/*</exclude-pattern>
+	<!-- Yükseltme testi profili (release yığınında wp eval-file ile koşan betikler); pakete girmez (ZIP beyaz listesinde dev-tools/ yok). -->
+	<exclude-pattern>*/dev-tools/*</exclude-pattern>
+
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="sp"/>
+
+	<config name="minimum_wp_version" value="7.0"/>
+	<config name="testVersion" value="8.1-"/>
+
+	<rule ref="WordPress"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- Ev kanunu (WP.org dışı ürün): güvenlik ve SQL hazırlama bulguları UYARI değil HATA. -->
+	<rule ref="WordPress.Security">
+		<type>error</type>
+	</rule>
+	<rule ref="WordPress.DB.PreparedSQL">
+		<type>error</type>
+	</rule>
+	<rule ref="WordPress.DB.PreparedSQLPlaceholders">
+		<type>error</type>
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="mhm-slotiva"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="slotiva"/>
+				<element value="SLOTIVA"/>
+				<element value="MHM\Slotiva"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- PSR-4 sınıf dosyaları (src/, tests/) WP dosya adı kuralına uymaz; autoload bunu ister. -->
+	<rule ref="WordPress.Files.FileName">
+		<exclude-pattern>*/src/*</exclude-pattern>
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+
+	<!-- Test sınıflarında docblock zorunlu değil; test adı belgedir. -->
+	<rule ref="Squiz.Commenting.FunctionComment.Missing">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+	<rule ref="Squiz.Commenting.ClassComment.Missing">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+	<rule ref="Squiz.Commenting.VariableComment.Missing">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+	<rule ref="WordPress.WP.AlternativeFunctions">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+</ruleset>

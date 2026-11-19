@@ -1,0 +1,28 @@
+/**
+ * Setup wizard entry (Admin\Menu: admin.php?page=slotiva-setup, hidden full-screen page).
+ */
+import { createRoot } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+
+import ErrorBoundary from '../../../vendor/mhm/ui-core/src-react/components/ErrorBoundary';
+import App from './App';
+import '../shared/admin.scss';
+import './setup.scss';
+
+const root = document.getElementById( 'slotiva-admin-root' );
+if ( root ) {
+	createRoot( root ).render(
+		<ErrorBoundary
+			fallback={
+				<p>
+					{ __(
+						'This screen could not be shown. Reload the page.',
+						'mhm-slotiva'
+					) }
+				</p>
+			}
+		>
+			<App />
+		</ErrorBoundary>
+	);
+}

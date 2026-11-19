@@ -1,0 +1,799 @@
+/**
+ * Slotiva admin screens: only what the ui-core kit does not draw (slot picker, row actions, small form rows).
+ * Colours come from the kit tokens (`.mhmui-admin` scope), with WordPress admin fallbacks.
+ */
+
+.slotiva-muted {
+	color: var(--mhmui-text-muted, #646970);
+}
+
+.slotiva-appointments__table td {
+	vertical-align: top;
+}
+
+.slotiva-row-actions {
+	white-space: nowrap;
+
+	> a,
+	> .mhmui-confirm {
+		display: inline-flex;
+		align-items: center;
+		margin-inline-end: 12px;
+		vertical-align: middle;
+	}
+}
+
+.slotiva-check {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	margin: 10px 0 0;
+
+	input[type="checkbox"] {
+		margin: 0;
+	}
+}
+
+.slotiva-field {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin: 0 0 12px;
+
+	input,
+	select {
+		width: 100%;
+		max-width: 100%;
+		min-height: 36px;
+	}
+}
+
+/* Slot picker (frame 7). */
+.slotiva-picker {
+	margin: 0 0 8px;
+}
+
+.slotiva-picker__nav {
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+	margin: 0 0 8px;
+}
+
+.slotiva-picker__days {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	gap: 6px;
+	margin: 0 0 12px;
+}
+
+.slotiva-picker__day,
+.slotiva-picker__time {
+	border: 1px solid var(--mhmui-border, #c3c4c7);
+	border-radius: var(--mhmui-radius, 4px);
+	background: var(--mhmui-surface, #fff);
+	color: var(--mhmui-text, #1d2327);
+	font: inherit;
+	cursor: pointer;
+
+	&:focus-visible {
+		outline: 2px solid var(--mhmui-accent, #2271b1);
+		outline-offset: 1px;
+	}
+
+	&[aria-pressed="true"] {
+		border: 2px solid var(--mhmui-accent, #2271b1);
+		background: var(--mhmui-info-soft, #e5f0fa);
+		color: var(--mhmui-accent-strong, #135e96);
+		font-weight: 600;
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		color: var(--mhmui-border-strong, #8c8f94);
+	}
+}
+
+.slotiva-picker__day {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 52px;
+	padding: 4px 2px;
+	line-height: 1.3;
+
+	&:disabled {
+		border-style: dashed;
+		border-color: var(--mhmui-border-divider, #dcdcde);
+	}
+}
+
+.slotiva-picker__times {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr));
+	gap: 6px;
+}
+
+.slotiva-picker__time {
+	min-height: 36px;
+
+	&--current:disabled {
+		border-color: var(--mhmui-border-light, #f0f0f1);
+		background: var(--mhmui-neutral-soft, #f6f7f7);
+		text-decoration: line-through;
+	}
+}
+
+.slotiva-picker__hint {
+	margin: 8px 0;
+	color: var(--mhmui-text-muted, #646970);
+}
+
+/* Detail (frame 7): details left, "Change time" right and wider; the kit's aside is narrow and sticky by default. */
+.slotiva-detail {
+	.mhmui-detail-layout__main {
+		flex: 1 1 320px;
+	}
+
+	.mhmui-detail-layout__aside {
+		flex: 1.4 1 420px;
+		position: static;
+		max-height: none;
+		overflow: visible;
+	}
+}
+
+.slotiva-detail__subhead {
+	margin: 18px 0 8px;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.slotiva-history {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin: 0;
+	padding-inline-start: 18px;
+	color: var(--mhmui-text-secondary, #50575e);
+}
+
+.slotiva-detail__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 18px;
+	padding-top: 14px;
+	border-top: 1px solid var(--mhmui-border-divider, #dcdcde);
+}
+
+.slotiva-detail__move,
+.slotiva-add-dialog__footer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 8px;
+	margin-top: 14px;
+	padding-top: 14px;
+	border-top: 1px solid var(--mhmui-border-divider, #dcdcde);
+
+	p {
+		margin: 0;
+	}
+}
+
+.slotiva-detail__extend {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+
+	input {
+		width: 6rem;
+	}
+}
+
+.slotiva-add-dialog {
+	width: min(40rem, 100vw - 32px);
+}
+
+.slotiva-add-dialog__fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+	gap: 0 12px;
+	margin-top: 12px;
+}
+
+@media (max-width: 782px) {
+	.slotiva-picker__time,
+	.slotiva-picker__nav .button,
+	.slotiva-row-actions > a {
+		min-height: 44px;
+	}
+}
+
+/* Working hours (frame 8): weekly ranges on the left; exceptions and booking rules on the right; stacked when narrow. */
+.slotiva-schedule__grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	align-items: flex-start;
+}
+
+.slotiva-schedule__main {
+	flex: 1.5 1 480px;
+	min-width: 0;
+}
+
+.slotiva-schedule__aside {
+	display: flex;
+	flex: 1 1 320px;
+	flex-direction: column;
+	gap: 16px;
+	min-width: 0;
+}
+
+.slotiva-schedule .mhmui-widget,
+.slotiva-settings .mhmui-widget {
+	margin: 0;
+}
+
+.slotiva-week {
+	display: flex;
+	flex-direction: column;
+}
+
+.slotiva-day {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 12px;
+	align-items: center;
+	padding: 10px 0;
+	border-bottom: 1px solid var(--mhmui-border-light, #f0f0f1);
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
+.slotiva-day__toggle {
+	display: flex;
+	flex: 0 0 120px;
+	gap: 8px;
+	align-items: center;
+	cursor: pointer;
+
+	input[type="checkbox"] {
+		margin: 0;
+	}
+}
+
+.slotiva-day__ranges {
+	display: flex;
+	flex: 1 1 18rem;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+	min-width: 0;
+}
+
+.slotiva-widget-intro {
+	margin: 0 0 12px;
+	color: var(--mhmui-text-muted, #646970);
+}
+
+/* A range is one chip: start – end ×. */
+.slotiva-range {
+	display: inline-flex;
+	gap: 4px;
+	align-items: center;
+	padding: 2px 4px 2px 8px;
+	border: 1px solid var(--mhmui-border, #c3c4c7);
+	border-radius: var(--mhmui-radius, 4px);
+	background: var(--mhmui-neutral-soft, #f6f7f7);
+
+	.mhmui-admin & input[type="time"] {
+		width: 5.75rem;
+		min-height: 28px;
+		padding: 0 2px;
+		border: 0;
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.mhmui-admin & input[type="time"]:focus-visible {
+		outline: 2px solid var(--mhmui-accent, #2271b1);
+		outline-offset: 0;
+	}
+}
+
+.slotiva-range__remove {
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	border: 0;
+	border-radius: var(--mhmui-radius, 4px);
+	background: transparent;
+	color: var(--mhmui-danger-strong, #b32d2e);
+	font-size: 16px;
+	line-height: 1;
+	cursor: pointer;
+
+	&:hover {
+		background: var(--mhmui-danger-soft, #fcf0f1);
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--mhmui-accent, #2271b1);
+		outline-offset: 1px;
+	}
+}
+
+.mhmui-admin .slotiva-day__add {
+	min-height: 30px;
+	padding: 0 10px;
+	border: 1px dashed var(--mhmui-border-strong, #8c8f94);
+	border-radius: var(--mhmui-radius, 4px);
+	background: var(--mhmui-surface, #fff);
+	color: var(--mhmui-accent, #2271b1);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.slotiva-exceptions {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin: 0 0 12px;
+	padding: 0;
+	list-style: none;
+}
+
+.slotiva-exception {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 8px;
+	align-items: center;
+	margin: 0;
+	padding: 8px;
+	border-radius: var(--mhmui-radius, 4px);
+	background: var(--mhmui-neutral-soft, #f6f7f7);
+}
+
+.slotiva-exception__when {
+	flex: 1 1 10rem;
+	min-width: 0;
+}
+
+.slotiva-exception-form {
+	padding: 12px;
+	border: 1px solid var(--mhmui-border-divider, #dcdcde);
+	border-radius: var(--mhmui-radius, 4px);
+}
+
+.slotiva-exception-form__fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+	gap: 0 12px;
+}
+
+.slotiva-exceptions__add {
+	margin: 0;
+}
+
+.slotiva-exception-form__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+	margin-top: 12px;
+}
+
+.slotiva-schedule__footer {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	align-items: flex-end;
+	margin-top: 16px;
+
+	p {
+		align-self: stretch;
+		margin: 0;
+	}
+}
+
+.slotiva-rule {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin: 0 0 12px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.slotiva-rule__control {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+
+	input[type="number"] {
+		width: 70px;
+		min-height: 30px;
+	}
+
+	select {
+		min-height: 32px;
+	}
+}
+
+.slotiva-rule__help {
+	display: block;
+	margin: 0;
+	color: var(--mhmui-text-muted, #646970);
+}
+
+.slotiva-rule--reminder .slotiva-check {
+	margin: 0;
+}
+
+/* Settings: one column of cards, readable line length. */
+.slotiva-settings {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	max-width: 52rem;
+
+	textarea {
+		width: 100%;
+	}
+
+	.slotiva-schedule__footer {
+		margin-top: 0;
+	}
+}
+
+@media (max-width: 782px) {
+	.mhmui-admin .slotiva-range input[type="time"],
+	.slotiva-rule__control input,
+	.slotiva-rule__control select,
+	.mhmui-admin .slotiva-day__add {
+		min-height: 40px;
+	}
+
+	.slotiva-range__remove {
+		width: 40px;
+		height: 40px;
+	}
+
+	.slotiva-schedule__footer {
+		align-items: stretch;
+	}
+}
+
+// Setup checklist card on the Appointments page (1.0.2, artboard Checklist).
+.slotiva-checklist {
+	background: var(--mhmui-surface, #fff);
+	border: 1px solid var(--mhmui-border, #c3c4c7);
+	border-radius: 10px;
+	padding: 22px 24px;
+	margin: 16px 0;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.slotiva-checklist__head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 24px;
+}
+
+.slotiva-checklist__heading {
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--mhmui-text, #1d2327);
+}
+
+.slotiva-checklist__sub {
+	margin: 6px 0 0;
+	font-size: 14px;
+	color: var(--mhmui-text-muted, #50575e);
+}
+
+.slotiva-checklist__actions {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	flex: none;
+}
+
+.slotiva-checklist__primary {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding: 0 16px;
+	background: var(--mhmui-primary, #2271b1);
+	color: #fff;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 600;
+	border-radius: 6px;
+
+	&:hover,
+	&:focus {
+		background: var(--mhmui-primary-hover, #135e96);
+		color: #fff;
+	}
+}
+
+.slotiva-checklist__hide {
+	min-height: 44px;
+	padding: 0 12px;
+	border: 0;
+	background: transparent;
+	font: inherit;
+	font-size: 13px;
+	color: var(--mhmui-text-muted, #50575e);
+	cursor: pointer;
+}
+
+.slotiva-checklist__error {
+	margin: 0;
+	color: var(--mhmui-danger, #b32d2e);
+}
+
+.slotiva-checklist__bar {
+	height: 8px;
+	background: var(--mhmui-surface-alt, #f0f0f1);
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+.slotiva-checklist__fill {
+	height: 100%;
+	background: var(--mhmui-success, #00a32a);
+	border-radius: 999px;
+}
+
+.slotiva-checklist__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.slotiva-checklist__row {
+	display: flex;
+	gap: 12px;
+	align-items: flex-start;
+	margin: 0;
+	padding: 14px 16px;
+	border: 1px solid var(--mhmui-border-subtle, #dcdcde);
+	border-radius: 8px;
+	background: var(--mhmui-surface, #fff);
+}
+
+.slotiva-checklist__row--done {
+	background: var(--mhmui-surface-muted, #f6f7f7);
+	border-color: var(--mhmui-surface-alt, #f0f0f1);
+
+	.slotiva-checklist__title {
+		color: var(--mhmui-text-muted, #50575e);
+		text-decoration: line-through;
+	}
+
+	.slotiva-checklist__badge {
+		border: 0;
+		background: var(--mhmui-success-bg, #dcf7dc);
+		color: var(--mhmui-success-text, #007a1f);
+	}
+}
+
+.slotiva-checklist__row--current {
+	border: 2px solid var(--mhmui-info, #2271b1);
+
+	.slotiva-checklist__badge {
+		border: 2px solid var(--mhmui-info, #2271b1);
+		color: var(--mhmui-primary-hover, #135e96);
+		font-weight: 700;
+	}
+}
+
+.slotiva-checklist__badge {
+	flex: none;
+	box-sizing: border-box;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	border: 1px solid var(--mhmui-text-subtle, #8c8f94);
+	color: var(--mhmui-text-muted, #50575e);
+	font-size: 12px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.slotiva-checklist__body {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.slotiva-checklist__title {
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.slotiva-checklist__detail {
+	font-size: 13px;
+	line-height: 1.5;
+	color: var(--mhmui-text-muted, #50575e);
+	margin-top: -6px;
+}
+
+.slotiva-checklist__links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px;
+	align-items: center;
+
+	a {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 782px) {
+	.slotiva-checklist__head {
+		flex-direction: column;
+	}
+
+	.slotiva-checklist__list {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+// Ayarlar: "Randevulu ürünler" kartı (1.0.2).
+.slotiva-products {
+	background: var(--mhmui-surface, #fff);
+	border: 1px solid var(--mhmui-border, #c3c4c7);
+	border-radius: 10px;
+	overflow: hidden;
+	margin-bottom: 18px;
+	max-width: 832px;
+
+	a {
+		color: var(--mhmui-link, #2271b1);
+	}
+}
+
+.slotiva-products__head {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 16px;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 20px;
+	border-bottom: 1px solid var(--mhmui-border-subtle, #dcdcde);
+
+	h2 {
+		margin: 0;
+		font-size: 15px;
+		font-weight: 600;
+	}
+}
+
+.slotiva-products__wizard {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 44px;
+	font-size: 13px;
+}
+
+.slotiva-products__info {
+	display: flex;
+	gap: 12px;
+	align-items: flex-start;
+	padding: 14px 20px;
+	background: var(--mhmui-info-bg, #e5f0fa);
+	color: var(--mhmui-text, #1d2327);
+	font-size: 14px;
+	line-height: 1.5;
+
+	svg {
+		flex: none;
+		margin-top: 2px;
+		color: var(--mhmui-info, #135e96);
+	}
+}
+
+.slotiva-products__scroll {
+	overflow-x: auto;
+}
+
+.slotiva-products__table {
+	width: 100%;
+	min-width: 560px;
+	border-collapse: collapse;
+	font-size: 14px;
+
+	th,
+	td {
+		padding: 12px;
+		text-align: left;
+		border-bottom: 1px solid var(--mhmui-border-faint, #f0f0f1);
+	}
+
+	th {
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--mhmui-text-muted, #50575e);
+	}
+
+	th:first-child,
+	td:first-child {
+		padding-left: 20px;
+	}
+
+	th:last-child,
+	td:last-child {
+		padding-right: 20px;
+	}
+
+	tbody tr:last-child td {
+		border-bottom: 0;
+	}
+}
+
+.slotiva-products__name {
+	font-weight: 600;
+}
+
+.slotiva-products__table td.slotiva-products__action {
+	text-align: right;
+	white-space: nowrap;
+
+	a {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+		font-size: 13px;
+	}
+}
+
+.slotiva-products__foot,
+.slotiva-products__empty {
+	padding: 4px 20px;
+	font-size: 13px;
+
+	a {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+	}
+}
+
+.slotiva-products__foot {
+	border-top: 1px solid var(--mhmui-border-faint, #f0f0f1);
+}
+
+.slotiva-products__empty p {
+	margin: 12px 0 0;
+	font-size: 14px;
+}

@@ -1,0 +1,9 @@
+{
+    "_purpose": "Gate G-D (Slotiva) documented warning acceptance. Started EMPTY in Lite 1.1.0 Task 17: no entry is inherited from mhm-rentiva. Every entry is individually audited and carries a reason per code; regenerate only alongside the change that justifies it: php bin/check-plugin-check-parity.php --write-accepted-warnings",
+    "reasons": {
+        "PluginCheck.Security.DirectDB.UnescapedDBParameter": "ReservationRepository::ids() and ::scalar() are the booking engine's two single-statement executors: each runs one query and turns a database error into the engine's typed failure (guard()), which the race-safe claim/reschedule paths depend on. Every caller passes the return value of $wpdb->prepare() -- ids(): 2 callers, scalar(): 3 call sites, one of which appends only the constant ' FOR UPDATE' -- with the table bound as %i and every value bound; no request input reaches either helper unprepared. The sniff reports the variable argument, not an unescaped value. Measured 2026-11-18 (Task 17): the other 38 instances of this warning were removed by binding table names with %i and inlining the prepare() call; these two remain by design."
+    },
+    "accepted": {
+        "src/Reservation/ReservationRepository.php|PluginCheck.Security.DirectDB.UnescapedDBParameter": 2
+    }
+}

@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders_identically_without_filters summary multi fixed 1`] = `
+"<div>
+  <div class=slotiva-picker__summary>
+    <h3 class=slotiva-picker__summary-title>
+      "#"
+    <ul aria-label class=slotiva-picker__picked>
+      <li>
+        <span>
+          "#"
+        <button aria-label class=slotiva-picker__remove type=button>
+          <span aria-hidden>
+            "#"
+"
+`;
+
+exports[`renders_identically_without_filters summary multi per slot 1`] = `
+"<div>
+  <div class=slotiva-picker__summary>
+    <h3 class=slotiva-picker__summary-title>
+      "#"
+    <ul aria-label class=slotiva-picker__picked>
+      <li>
+        <span>
+          "#"
+        <button aria-label class=slotiva-picker__remove type=button>
+          <span aria-hidden>
+            "#"
+    <p class=slotiva-picker__line-total>
+      <span>
+        "#"
+      <span>
+        "#"
+    <p class=slotiva-picker__muted slotiva-picker__note>
+      "#"
+"
+`;
+
+exports[`renders_identically_without_filters summary single empty 1`] = `
+"<div>
+  <p class=slotiva-picker__pick role=status>
+    <span class=slotiva-picker__muted>
+      "#"
+"
+`;
+
+exports[`renders_identically_without_filters summary single with pick 1`] = `
+"<div>
+  <p class=slotiva-picker__pick role=status>
+    <span class=slotiva-picker__muted>
+      "#"
+    <strong>
+      "#"
+"
+`;
+
+exports[`renders_identically_without_filters time grid multi 1`] = `
+"<div>
+  <div aria-label class=slotiva-picker__times role=group>
+    <button aria-pressed class=slotiva-picker__time is-selected type=button>
+      <span aria-hidden>
+        "#"
+      "#"
+    <button aria-pressed class=slotiva-picker__time type=button>
+      "#"
+"
+`;
+
+exports[`renders_identically_without_filters time grid single 1`] = `
+"<div>
+  <div aria-label class=slotiva-picker__times role=group>
+    <button aria-pressed class=slotiva-picker__time is-selected type=button>
+      "#"
+    <button aria-pressed class=slotiva-picker__time type=button>
+      "#"
+"
+`;

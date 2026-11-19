@@ -1,0 +1,63 @@
+{
+    "name": "maxhandmade/mhm-slotiva",
+    "description": "MHM Slotiva: hourly service appointment booking for WooCommerce",
+    "version": "1.1.0",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=8.1",
+        "mhm/ui-core": "^0.23"
+    },
+    "require-dev": {
+        "php-stubs/woocommerce-stubs": "^11.2",
+        "phpcompatibility/phpcompatibility-wp": "*",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^9.6",
+        "szepeviktor/phpstan-wordpress": "^2.0",
+        "wp-coding-standards/wpcs": "^3.1",
+        "yoast/phpunit-polyfills": "^2.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/MaxHandMade/mhm-ui-core",
+            "no-api": true
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MHM\\Slotiva\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MHM\\Slotiva\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "scripts": {
+        "test": "phpunit --testsuite mhm-slotiva",
+        "test:gates": "phpunit --no-configuration --bootstrap vendor/autoload.php tests/Tools",
+        "test:list": "phpunit --list-tests",
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
+        "phpstan": "phpstan analyse --memory-limit=1G --no-progress",
+        "phpstan:level0": "phpstan analyse -c phpstan-level0.neon --memory-limit=1G --no-progress",
+        "check": [
+            "@phpcs",
+            "@phpstan",
+            "@phpstan:level0",
+            "@test"
+        ]
+    },
+    "scripts-descriptions": {
+        "check": "Kod standardı + statik analiz + testler (yerel ve CI aynı komut)."
+    }
+}

@@ -1,0 +1,20 @@
+.superpowers/
+node_modules/
+vendor/
+build/
+.env
+docker/.env
+composer.phar
+.phpunit.result.cache
+.phpcs-cache
+*.zip
+dist/
+
+# Yerel DB yedekleri (docker/demo-seed.sh uretir)
+docker/.backups/
+
+# Cekim ciktilari (docker/wporg-shoot/shoot.js)
+docker/wporg-shoot/out/
+
+# Local agent settings
+.claude/

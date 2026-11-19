@@ -1,0 +1,343 @@
+name: Testing
+
+on:
+  pull_request:
+  push:
+    branches: [ '**' ]
+
+concurrency:
+  group: testing-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    name: PHPCS + PHPStan
+    runs-on: ${{ vars.MHM_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v7
+
+      - name: Setup PHP
+        if: ${{ runner.environment != 'self-hosted' }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+
+      - name: Select the preinstalled PHP (self-hosted runner)
+        # The mhm-ci-runner image ships PHP 8.1-8.4 and Composer; setup-php stalls there (mhm-ci-runner README).
+        if: ${{ runner.environment == 'self-hosted' }}
+        run: |
+          update-alternatives --set php "/usr/bin/php8.3"
+          php -v | head -1
+          composer --version
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v5
+        with:
+          path: |
+            vendor
+            ~/.composer/cache/files
+          key: ${{ runner.environment }}-${{ runner.os }}-php-8.3-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.environment }}-${{ runner.os }}-php-8.3-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Run PHPCS
+        run: composer phpcs
+
+      - name: Run PHPStan
+        run: composer phpstan
+
+      # Seviye 0, taban dosyası yok: tabana gömülü hata bu kapıdan geçemez.
+      - name: Run PHPStan level 0 (no baseline)
+        run: composer phpstan:level0
+
+  phpunit:
+    name: PHPUnit (PHP ${{ matrix.php }} / WP ${{ matrix.wp }} / WC ${{ matrix.wc }})
+    runs-on: ${{ vars.MHM_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 20
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # WordPress ve WooCommerce sürümleri ÇİFT olarak sabitlenir; "latest" = en son YAYINLANMIŞ WC (trunk değil).
+        # Taban (7.0 / 11.2.1), güncel ve en yeni PHP üçlüsü. Çözülen sürümler
+        # "[install-wp-tests] resolved/verified" satırlarından okunur.
+        include:
+          - php: '8.1'
+            wp: '7.0'
+            wc: '11.2.1'
+          - php: '8.3'
+            wp: 'latest'
+            wc: '11.2.1'
+          - php: '8.4'
+            wp: 'latest'
+            wc: 'latest'
+
+    services:
+      mysql:
+        # Empty on the self-hosted runner (a runner inside a container cannot start services); a step starts it there.
+        image: ${{ !vars.MHM_RUNNER && 'mysql:8.4' || '' }}
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v7
+
+      - name: Setup PHP
+        if: ${{ runner.environment != 'self-hosted' }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mysqli
+          tools: composer:v2
+          coverage: none
+
+      - name: Select the preinstalled PHP (self-hosted runner)
+        # The mhm-ci-runner image ships PHP 8.1-8.4 and Composer; setup-php stalls there (mhm-ci-runner README).
+        if: ${{ runner.environment == 'self-hosted' }}
+        run: |
+          update-alternatives --set php "/usr/bin/php${{ matrix.php }}"
+          php -v | head -1
+          composer --version
+
+      - name: Start MySQL (self-hosted runner)
+        if: ${{ runner.environment == 'self-hosted' }}
+        run: |
+          # A self-hosted runner keeps /tmp between jobs.
+          rm -rf /tmp/wordpress /tmp/wordpress-tests-lib /tmp/wordpress.tar.gz /tmp/woocommerce.zip
+          # One MySQL per job on its own network, no host port (mhm-ci-runner README).
+          NAME="mhm-ci-mysql-${{ github.run_id }}-${{ github.run_attempt }}-${{ strategy.job-index }}"
+          echo "MHM_CI_MYSQL=$NAME" >> "$GITHUB_ENV"
+          echo "MHM_DB_HOST=$NAME" >> "$GITHUB_ENV"
+          docker network create "$NAME" >/dev/null
+          docker run -d --name "$NAME" --network "$NAME" -e MYSQL_ROOT_PASSWORD=root             --tmpfs /var/lib/mysql:rw mysql:8.4 >/dev/null
+          docker network connect "$NAME" "$(hostname)"
+          # TCP ping: the image's init server answers a socket ping, then restarts.
+          for i in $(seq 1 90); do
+            docker exec "$NAME" mysqladmin ping -h127.0.0.1 -P3306 -uroot -proot --silent 2>/dev/null && exit 0
+            sleep 2
+          done
+          echo "MySQL did not come up" >&2; exit 1
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v5
+        with:
+          path: |
+            vendor
+            ~/.composer/cache/files
+          key: ${{ runner.environment }}-${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.environment }}-${{ runner.os }}-php-${{ matrix.php }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      # WP_CORE_DIR sabit: bootstrap WooCommerce'i WP_CORE_DIR/wp-content/plugins altından yükler.
+      - name: Install WordPress test library + WooCommerce
+        env:
+          WC_VERSION: ${{ matrix.wc }}
+          WP_CORE_DIR: /tmp/wordpress
+        run: bash bin/install-wp-tests.sh wordpress_test root root "${MHM_DB_HOST:-127.0.0.1}:3306" ${{ matrix.wp }}
+
+      - name: Run PHPUnit
+        env:
+          WP_TESTS_DIR: /tmp/wordpress-tests-lib
+          # Composer's 300 s script limit cut suites off on the self-hosted runner.
+          COMPOSER_PROCESS_TIMEOUT: 0
+        run: composer test
+
+      - name: Stop MySQL (self-hosted runner)
+        if: ${{ always() && runner.environment == 'self-hosted' }}
+        run: |
+          [ -n "${MHM_CI_MYSQL:-}" ] || exit 0
+          docker network disconnect "$MHM_CI_MYSQL" "$(hostname)" >/dev/null 2>&1 || true
+          docker rm -f "$MHM_CI_MYSQL" >/dev/null 2>&1 || true
+          docker network rm "$MHM_CI_MYSQL" >/dev/null 2>&1 || true
+
+  jest:
+    name: Front-end JS
+    runs-on: ${{ vars.MHM_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v7
+
+      # The admin React screens import mhm/ui-core from vendor/ (relative paths), so Jest and the
+      # build need the Composer dependencies too.
+      - name: Setup PHP
+        if: ${{ runner.environment != 'self-hosted' }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+
+      - name: Select the preinstalled PHP (self-hosted runner)
+        # The mhm-ci-runner image ships PHP 8.1-8.4 and Composer; setup-php stalls there (mhm-ci-runner README).
+        if: ${{ runner.environment == 'self-hosted' }}
+        run: |
+          update-alternatives --set php "/usr/bin/php8.3"
+          php -v | head -1
+          composer --version
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v5
+        with:
+          path: |
+            vendor
+            ~/.composer/cache/files
+          key: ${{ runner.environment }}-${{ runner.os }}-php-8.3-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.environment }}-${{ runner.os }}-php-8.3-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Build önce: Jest derlenmiş build/admin/setup.css'i okur (CI'da yoksa test düşer).
+      - name: Build bundle
+        run: npm run build
+
+      - name: Run Jest
+        run: npm run test:js
+
+      - name: Run ESLint
+        run: npm run lint:js
+
+  gates:
+    name: Lite carve gates (built ZIP)
+    runs-on: ${{ vars.MHM_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v7
+
+      - name: Setup PHP
+        if: ${{ runner.environment != 'self-hosted' }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: zip
+          tools: composer:v2
+          coverage: none
+
+      - name: Select the preinstalled PHP (self-hosted runner)
+        # The mhm-ci-runner image ships PHP 8.1-8.4 and Composer; setup-php stalls there (mhm-ci-runner README).
+        if: ${{ runner.environment == 'self-hosted' }}
+        run: |
+          update-alternatives --set php "/usr/bin/php8.3"
+          php -v | head -1
+          composer --version
+
+      - name: Ensure zip tooling (php-zip, zip, unzip)
+        # build-zip.sh and the manifest/surface gates need ZipArchive and the zip/unzip binaries.
+        run: |
+          SUDO=""; [ "$(id -u)" -eq 0 ] || SUDO="sudo"
+          need=""
+          command -v zip >/dev/null 2>&1 || need="$need zip"
+          command -v unzip >/dev/null 2>&1 || need="$need unzip"
+          php -r 'exit(class_exists("ZipArchive") ? 0 : 1);' || need="$need php8.3-zip"
+          if [ -n "$need" ]; then
+            $SUDO apt-get update -qq
+            $SUDO apt-get install -y -qq $need
+          fi
+          php -r 'exit(class_exists("ZipArchive") ? 0 : 1);'
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v5
+        with:
+          path: |
+            vendor
+            ~/.composer/cache/files
+          key: ${{ runner.environment }}-${{ runner.os }}-php-8.3-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.environment }}-${{ runner.os }}-php-8.3-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Kapılar temiz derlenmiş build/ üzerinde koşar (ZIP'e build/ girer).
+      - name: Fresh build
+        run: |
+          rm -rf build
+          npm run build
+
+      - name: Build and verify the ZIP
+        # build-zip.sh normally wraps itself in `docker run`; its bind mount would point at the runner container's
+        # path, not the host's. Here the runner IS the build environment (PHP, Composer, zip, unzip), so the script
+        # runs its in-container half directly with /src linked to the workspace (the path it expects).
+        env:
+          SLOTIVA_IN_DOCKER: '1'
+        run: |
+          SUDO=""; [ "$(id -u)" -eq 0 ] || SUDO="sudo"
+          $SUDO ln -sfn "$GITHUB_WORKSPACE" /src
+          mkdir -p dist
+          git ls-files > dist/.git-files.txt
+          bash bin/build-zip.sh
+          rm -f dist/.git-files.txt
+          ls -l dist/*.zip
+
+      - name: Gate - no Pro references
+        run: php bin/check-no-pro-refs.php
+
+      - name: Gate - crippleware
+        run: php bin/check-crippleware.php
+
+      - name: Gate - ZIP manifest
+        run: php bin/check-manifest.php
+
+      - name: Gate - shipped surface
+        run: php bin/check-shipped-surface.php
+
+      - name: Gate - external HTTP
+        run: php bin/check-external-http.php
+
+      - name: Gate - ui-core version
+        run: php bin/check-uicore-version.php
+
+      - name: Gate - short prefix
+        run: php bin/check-short-prefix.php
+
+      - name: Gate - version literals
+        run: php bin/check-version-literals.php
+
+      # Kapı testleri WordPress'siz koşar; derlenmiş build/ ve ZIP ister, bu yüzden PHPUnit işlerinde değil burada.
+      - name: Gate tests (tests/Tools, no WordPress)
+        run: composer test:gates

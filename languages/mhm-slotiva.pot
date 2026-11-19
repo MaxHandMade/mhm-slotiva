@@ -1,0 +1,2859 @@
+# Copyright (C) 2026 MaxHandMade
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: MHM Slotiva 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wpalemi.com\n"
+"Last-Translator: MaxHandMade\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-18T21:08:05+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: mhm-slotiva\n"
+
+#. Plugin Name of the plugin
+#: mhm-slotiva.php
+msgid "MHM Slotiva"
+msgstr ""
+
+#. Description of the plugin
+#: mhm-slotiva.php
+msgid "WooCommerce service appointment booking: time slots chosen at checkout, payment-aware holds, an admin calendar and reminders."
+msgstr ""
+
+#. Author of the plugin
+#: mhm-slotiva.php
+msgid "MaxHandMade"
+msgstr ""
+
+#. Author URI of the plugin
+#: mhm-slotiva.php
+msgid "https://wpalemi.com"
+msgstr ""
+
+#: mhm-slotiva.php:34
+msgid "MHM Slotiva is missing its dependencies (vendor/). Run composer install."
+msgstr ""
+
+#: src/Admin/Csv.php:65
+#: src/Privacy/Exporter.php:106
+#: build/admin/schedule.js:9
+msgid "Date"
+msgstr ""
+
+#: src/Admin/Csv.php:66
+#: src/Privacy/Exporter.php:107
+#: build/admin/appointments.js:2
+#: build/admin/detail.js:4
+msgid "Time"
+msgstr ""
+
+#: src/Admin/Csv.php:67
+#: src/Privacy/Exporter.php:108
+#: templates/emails/plain/slotiva-booking-details.php:20
+#: templates/emails/slotiva-booking-details.php:26
+#: build/admin/appointments.js:3
+#: build/admin/appointments.js:8
+#: build/admin/detail.js:17
+#: build/admin/setup.js:2
+#: build/admin/setup.js:10
+msgid "Service"
+msgstr ""
+
+#: src/Admin/Csv.php:68
+#: src/Privacy/Exporter.php:109
+msgid "Name"
+msgstr ""
+
+#: src/Admin/Csv.php:69
+#: src/Privacy/Exporter.php:110
+#: build/admin/appointments.js:3
+msgid "Phone"
+msgstr ""
+
+#: src/Admin/Csv.php:70
+#: src/Privacy/Exporter.php:111
+#: build/admin/appointments.js:3
+msgid "Email"
+msgstr ""
+
+#: src/Admin/Csv.php:71
+#: src/Privacy/Exporter.php:112
+msgid "Appointment status"
+msgstr ""
+
+#: src/Admin/Csv.php:72
+msgid "Payment status"
+msgstr ""
+
+#: src/Admin/Csv.php:73
+#: src/Privacy/Exporter.php:113
+msgid "Order no"
+msgstr ""
+
+#: src/Admin/Csv.php:84
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+msgid "Pending"
+msgstr ""
+
+#: src/Admin/Csv.php:85
+#: src/Notify/Format.php:97
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+msgid "Paid"
+msgstr ""
+
+#: src/Admin/Csv.php:86
+#: src/Notify/Format.php:98
+#: build/admin/appointments.js:1
+#: build/admin/appointments.js:6
+#: build/admin/detail.js:1
+msgid "Pay on site"
+msgstr ""
+
+#: src/Admin/Csv.php:87
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+msgid "Awaiting transfer"
+msgstr ""
+
+#: src/Admin/Csv.php:88
+#: src/Notify/Format.php:100
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+msgid "Refunded"
+msgstr ""
+
+#: src/Admin/Csv.php:89
+#: build/admin/appointments.js:1
+#: build/admin/appointments.js:9
+#: build/admin/detail.js:1
+msgid "Manual"
+msgstr ""
+
+#: src/Admin/Menu.php:126
+#: build/admin/appointments.js:6
+#: build/admin/schedule.js:4
+#: build/admin/setup.js:10
+msgid "Working hours"
+msgstr ""
+
+#: src/Admin/Menu.php:127
+#: build/admin/settings.js:3
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/Menu.php:143
+#: src/Admin/Menu.php:144
+#: src/Product/ProductTab.php:41
+#: build/admin/setup.js:2
+msgid "Slotiva"
+msgstr ""
+
+#: src/Admin/Menu.php:167
+#: build/admin/setup.js:2
+msgid "Setup"
+msgstr ""
+
+#: src/Admin/Menu.php:216
+#: src/Privacy/Exporter.php:67
+#: build/admin/appointments.js:6
+#: build/admin/detail.js:10
+msgid "Appointments"
+msgstr ""
+
+#: src/Admin/Menu.php:455
+#: build/admin/appointments.js:8
+#: build/admin/detail.js:10
+#: build/admin/schedule.js:4
+#: build/admin/settings.js:3
+#: build/admin/setup.js:24
+msgid "Loading…"
+msgstr ""
+
+#: src/Admin/Menu.php:457
+msgid "This screen needs JavaScript."
+msgstr ""
+
+#: src/Admin/RestController.php:440
+msgid "The download link has expired. Reload the page and try again."
+msgstr ""
+
+#: src/Admin/RestController.php:521
+msgid "Customer name is required."
+msgstr ""
+
+#: src/Admin/RestController.php:581
+msgid "This appointment was changed in the meantime. Reload and try again."
+msgstr ""
+
+#: src/Admin/RestController.php:611
+msgid "An appointment can be marked completed or no-show only after it has started."
+msgstr ""
+
+#. translators: 1: booking ID, 2: booking date and time, 3: administrator display name
+#: src/Admin/RestController.php:635
+#, php-format
+msgid "MHM Slotiva: booking #%1$d (%2$s) was cancelled by %3$s. It was in conflict and held no time slot, so no time was freed. The order itself was not changed; cancel or refund it in WooCommerce if needed."
+msgstr ""
+
+#. translators: 1: booking ID, 2: booking date and time, 3: administrator display name
+#: src/Admin/RestController.php:637
+#, php-format
+msgid "MHM Slotiva: booking #%1$d (%2$s) was cancelled by %3$s. The time slot is free again. The order itself was not changed; cancel or refund it in WooCommerce if needed."
+msgstr ""
+
+#. translators: 1: number of hours, 2: new deadline (local date and time), 3: administrator display name
+#: src/Admin/RestController.php:691
+#, php-format
+msgid "MHM Slotiva: the bank-transfer payment deadline was extended by %1$d hours to %2$s by %3$s."
+msgstr ""
+
+#. translators: %s: parameter name
+#: src/Admin/RestController.php:735
+#, php-format
+msgid "Missing parameter(s): %s"
+msgstr ""
+
+#: src/Admin/RestController.php:820
+msgid "Only an administrator can change whether booking data is deleted on uninstall."
+msgstr ""
+
+#. translators: %d: product ID
+#: src/Admin/RestController.php:1001
+#, php-format
+msgid "Product #%d"
+msgstr ""
+
+#: src/Admin/RestController.php:1072
+msgid "an administrator"
+msgstr ""
+
+#: src/Admin/RestController.php:1152
+msgid "That time is no longer available."
+msgstr ""
+
+#: src/Admin/RestController.php:1160
+msgid "Too many pending bookings."
+msgstr ""
+
+#: src/Admin/RestController.php:1162
+msgid "This booking is being updated. Please try again in a moment."
+msgstr ""
+
+#: src/Admin/RestController.php:1181
+msgid "Not found."
+msgstr ""
+
+#: src/Admin/RestController.php:1186
+msgid "That time is outside working hours or not on the 15-minute grid."
+msgstr ""
+
+#: src/Admin/RestController.php:1191
+msgid "This appointment cannot be changed in its current status."
+msgstr ""
+
+#: src/Admin/RestController.php:1196
+msgid "Only an unexpired bank-transfer hold can be extended."
+msgstr ""
+
+#: src/Availability/RestController.php:137
+msgid "Too many requests. Please try again in a moment."
+msgstr ""
+
+#: src/Availability/RestController.php:143
+msgid "Product not found."
+msgstr ""
+
+#: src/Availability/RestController.php:163
+msgid "Past dates cannot be requested."
+msgstr ""
+
+#: src/Availability/RestController.php:167
+msgid "The end date cannot be before the start date."
+msgstr ""
+
+#: src/Checkout/CheckoutFlow.php:135
+#: src/Checkout/SlotValidator.php:45
+msgid "Please choose a time for your appointment."
+msgstr ""
+
+#: src/Checkout/CheckoutFlow.php:170
+msgid "The time you chose was just taken. Please choose another time; your details are kept."
+msgstr ""
+
+#: src/Checkout/CheckoutFlow.php:175
+#: src/Checkout/StoreApiExtension.php:192
+#: build/checkout/index.js:8
+msgid "Your order is being processed. Please try again in a few seconds."
+msgstr ""
+
+#: src/Checkout/CheckoutFlow.php:177
+#: build/checkout/index.js:8
+msgid "You have too many bookings awaiting payment. Please complete them first or try again later."
+msgstr ""
+
+#: src/Checkout/CheckoutFlow.php:180
+msgid "This order has been replaced by a newer order and can no longer be paid. Please place a new order on the checkout page."
+msgstr ""
+
+#: src/Checkout/CheckoutFlow.php:183
+msgid "This booking was cancelled by the shop and can no longer be paid. Please contact the shop or place a new order."
+msgstr ""
+
+#: src/Checkout/CheckoutFlow.php:228
+msgid "We could not reserve your appointment right now. Nothing was charged. Please try again in a few minutes."
+msgstr ""
+
+#: src/Checkout/CheckoutFlow.php:300
+msgid "Bookable services can only be bought on the current checkout page. Please contact the site administrator."
+msgstr ""
+
+#. translators: PHP date format for a booked slot label, e.g. "17 Kasım Salı, 10:00".
+#: src/Checkout/CheckoutFlow.php:420
+msgctxt "slot label date format"
+msgid "j F l, H:i"
+msgstr ""
+
+#: src/Checkout/CheckoutFlow.php:535
+msgid "Your cart can hold only one bookable service at a time. Please remove the other one from your cart."
+msgstr ""
+
+#: src/Checkout/SlotValidator.php:56
+msgid "The chosen time could not be read. Please choose the time again."
+msgstr ""
+
+#: src/Checkout/SlotValidator.php:60
+msgid "The same time was chosen more than once."
+msgstr ""
+
+#: src/Checkout/SlotValidator.php:79
+msgid "The chosen times overlap each other."
+msgstr ""
+
+#: src/Checkout/SlotValidator.php:89
+msgid "The chosen time is no longer offered. Please choose another time."
+msgstr ""
+
+#: src/Checkout/SlotValidator.php:113
+msgid "The quantity in this order does not match the number of booked times, so the order cannot be paid as it is. Please place a new order on the checkout page."
+msgstr ""
+
+#: src/Checkout/SlotValidator.php:114
+msgid "The quantity in your cart does not match the number of chosen times. Please reload the page and try again."
+msgstr ""
+
+#. translators: %d: number of time slots.
+#: src/Checkout/SlotValidator.php:163
+#, php-format
+msgid "Choose %d time for this service."
+msgid_plural "Choose %d times for this service."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: minimum number of slots, 2: maximum number of slots.
+#: src/Checkout/SlotValidator.php:165
+#, php-format
+msgid "Choose between %1$d and %2$d times for this service."
+msgstr ""
+
+#: src/Checkout/StoreApiExtension.php:81
+msgid "Chosen appointment start times (ISO-8601, UTC)."
+msgstr ""
+
+#: src/Front/OrderDisplay.php:186
+msgid "Awaiting payment, your time slot is being held."
+msgstr ""
+
+#: src/Front/OrderDisplay.php:190
+msgid "Your appointment is confirmed."
+msgstr ""
+
+#: src/Front/OrderDisplay.php:192
+msgid "We could not keep this time. The shop will contact you to arrange a new time or a refund."
+msgstr ""
+
+#: src/Front/OrderDisplay.php:259
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+msgid "Held"
+msgstr ""
+
+#: src/Front/OrderDisplay.php:260
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+msgid "Confirmed"
+msgstr ""
+
+#: src/Front/OrderDisplay.php:261
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+msgid "Completed"
+msgstr ""
+
+#: src/Front/OrderDisplay.php:262
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+msgid "No-show"
+msgstr ""
+
+#: src/Front/OrderDisplay.php:263
+#: build/admin/appointments.js:1
+#: build/admin/appointments.js:6
+#: build/admin/detail.js:1
+msgid "Cancelled"
+msgstr ""
+
+#: src/Front/OrderDisplay.php:264
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+msgid "Expired"
+msgstr ""
+
+#: src/Front/OrderDisplay.php:265
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+msgid "Conflict"
+msgstr ""
+
+#: src/Front/OrderDisplay.php:266
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+msgid "Superseded"
+msgstr ""
+
+#: src/Front/OrderDisplay.php:412
+#: src/Front/OrderDisplay.php:456
+#: src/Front/OrderDisplay.php:482
+#: src/Privacy/Exporter.php:81
+#: build/admin/appointments.js:8
+#: build/admin/detail.js:10
+#: build/admin/setup.js:17
+msgid "Appointment"
+msgstr ""
+
+#: src/Front/OrderDisplay.php:519
+msgid "Open appointment details"
+msgstr ""
+
+#. translators: %s: order status name selected in the PayTR settings.
+#: src/Lifecycle/GatewayNotice.php:56
+#, php-format
+msgid "PayTR marks successful payments as \"%s\", which WooCommerce does not treat as paid. Bookings paid with PayTR are never confirmed and their time slots are released when the hold ends, although the customer has paid. Set the PayTR order status to Processing or Completed."
+msgstr ""
+
+#: src/Lifecycle/GatewayNotice.php:62
+msgid "Your checkout page does not use the Checkout block, so bookable services cannot be purchased. Switch the checkout page to the Checkout block."
+msgstr ""
+
+#: src/Lifecycle/HoldScheduler.php:126
+msgid "MHM Slotiva: the booking hold ended before the payment was confirmed. The time slot has been released; the order was not cancelled because its payment method is not a bank transfer. If the payment is completed, the slot is booked again when free, otherwise it is marked as a conflict."
+msgstr ""
+
+#: src/Lifecycle/HoldScheduler.php:303
+msgid "MHM Slotiva: the bank transfer was not received before the booking deadline. The time slot has been released and the order cancelled."
+msgstr ""
+
+#. translators: %s: checkout page URL.
+#: src/Lifecycle/OrderPayGuard.php:55
+#, php-format
+msgid "The time you picked is no longer available. Please <a href=\"%s\">return to the checkout page</a> and choose another time."
+msgstr ""
+
+#. translators: %s: checkout page URL.
+#: src/Lifecycle/OrderPayGuard.php:66
+#, php-format
+msgid "This order has been replaced by a newer order and can no longer be paid. Please <a href=\"%s\">go to the checkout page</a> to place a new order."
+msgstr ""
+
+#: src/Lifecycle/PaymentListener.php:317
+msgid "MHM Slotiva: payment arrived after the booking hold expired. The time slot was still free and has been booked again."
+msgstr ""
+
+#: src/Lifecycle/PaymentListener.php:380
+msgid "MHM Slotiva: payment arrived for a booking that was cancelled by an administrator before the payment arrived. The time slot was not booked again. Refund the order or set a new time manually."
+msgstr ""
+
+#: src/Lifecycle/PaymentListener.php:417
+msgid "MHM Slotiva: payment arrived for a booking that had been replaced by a newer order. The time slot was not booked again. Refund or reschedule manually."
+msgstr ""
+
+#: src/Lifecycle/PaymentListener.php:418
+msgid "MHM Slotiva: payment arrived after the booking hold expired and the time slot is taken by another booking. Refund or reschedule manually."
+msgstr ""
+
+#: src/Lifecycle/PaymentListener.php:475
+msgid "MHM Slotiva: the booking could not be updated after repeated attempts because the order was busy. Check the booking of this order manually."
+msgstr ""
+
+#: src/Notify/Email/AdminConflict.php:21
+#: src/Notify/Email/AdminConflict.php:56
+msgid "Booking conflict"
+msgstr ""
+
+#: src/Notify/Email/AdminConflict.php:22
+msgid "Sent to the shop when a paid order could not keep its time slot. Refund or set a new time manually."
+msgstr ""
+
+#: src/Notify/Email/AdminConflict.php:34
+msgid "Payment arrived for a booking that had been replaced by a newer order, so the time slot was not booked again."
+msgstr ""
+
+#: src/Notify/Email/AdminConflict.php:37
+msgid "Payment arrived for bookings that had been replaced by a newer order or cancelled by an administrator, so the time slots were not booked again."
+msgstr ""
+
+#: src/Notify/Email/AdminConflict.php:40
+msgid "Payment arrived for a booking that was cancelled by an administrator, so the time slot was not booked again."
+msgstr ""
+
+#: src/Notify/Email/AdminConflict.php:42
+msgid "Payment arrived after the booking hold expired and the time slot is now taken by another booking."
+msgstr ""
+
+#: src/Notify/Email/AdminConflict.php:49
+msgid "[{site_title}] Booking conflict: set a new time manually (order #{order_number})"
+msgstr ""
+
+#: src/Notify/Email/AdminNew.php:21
+#: src/Notify/Email/AdminNew.php:38
+msgid "New booking"
+msgstr ""
+
+#: src/Notify/Email/AdminNew.php:22
+msgid "Sent to the shop when a booking is confirmed (once per order). The calendar file (.ics) is attached."
+msgstr ""
+
+#: src/Notify/Email/AdminNew.php:31
+msgid "[{site_title}] New booking: {booking_date}"
+msgstr ""
+
+#: src/Notify/Email/BookingEmail.php:143
+msgid "Recipient(s)"
+msgstr ""
+
+#. translators: %s: default recipient address.
+#: src/Notify/Email/BookingEmail.php:146
+#, php-format
+msgid "Enter recipients (comma separated) for this email. Defaults to %s."
+msgstr ""
+
+#: src/Notify/Email/CustomerCancelled.php:21
+#: src/Notify/Email/CustomerCancelled.php:38
+msgid "Booking cancelled"
+msgstr ""
+
+#: src/Notify/Email/CustomerCancelled.php:22
+msgid "Sent to the customer when a booking is cancelled or a bank transfer deadline passes. A calendar cancellation (.ics) is attached."
+msgstr ""
+
+#: src/Notify/Email/CustomerCancelled.php:31
+msgid "Your booking has been cancelled"
+msgstr ""
+
+#: src/Notify/Email/CustomerConfirmed.php:21
+msgid "Booking confirmed"
+msgstr ""
+
+#: src/Notify/Email/CustomerConfirmed.php:22
+msgid "Sent to the customer once, when every booking of the order is confirmed. The calendar file (.ics) is attached."
+msgstr ""
+
+#: src/Notify/Email/CustomerConfirmed.php:31
+msgid "Your booking is confirmed: {booking_date}"
+msgstr ""
+
+#: src/Notify/Email/CustomerConfirmed.php:38
+msgid "Your booking is confirmed"
+msgstr ""
+
+#: src/Notify/Email/CustomerReminder.php:21
+msgid "Booking reminder"
+msgstr ""
+
+#: src/Notify/Email/CustomerReminder.php:22
+msgid "Sent to the customer before a confirmed booking (the number of hours is set in the Slotiva rules)."
+msgstr ""
+
+#: src/Notify/Email/CustomerReminder.php:31
+msgid "Reminder: your booking on {booking_date}"
+msgstr ""
+
+#: src/Notify/Email/CustomerReminder.php:38
+msgid "See you soon"
+msgstr ""
+
+#: src/Notify/Email/CustomerRescheduled.php:21
+msgid "Booking time changed"
+msgstr ""
+
+#: src/Notify/Email/CustomerRescheduled.php:22
+msgid "Sent to the customer when the time of a booking is changed with notification. The updated calendar file (.ics) is attached."
+msgstr ""
+
+#: src/Notify/Email/CustomerRescheduled.php:31
+msgid "Your booking time has changed: {booking_date}"
+msgstr ""
+
+#: src/Notify/Email/CustomerRescheduled.php:38
+msgid "New time for your booking"
+msgstr ""
+
+#: src/Notify/Format.php:96
+#: build/admin/appointments.js:6
+msgid "Awaiting payment"
+msgstr ""
+
+#: src/Notify/Format.php:99
+msgid "Awaiting bank transfer"
+msgstr ""
+
+#: src/Notify/Format.php:101
+msgid "Added manually"
+msgstr ""
+
+#. translators: 1: payment status, 2: payment method title.
+#. translators: 1: product name, 2: post status, e.g. "Draft".
+#: src/Notify/Format.php:116
+#: build/admin/setup.js:19
+#, php-format,js-format
+msgid "%1$s (%2$s)"
+msgstr ""
+
+#: src/Notify/Ics.php:102
+msgid "Booking"
+msgstr ""
+
+#: src/Privacy/Eraser.php:42
+#: src/Privacy/Exporter.php:40
+msgid "MHM Slotiva appointments"
+msgstr ""
+
+#: src/Privacy/Eraser.php:75
+msgid "MHM Slotiva: some appointment records could not be anonymised. Please try again."
+msgstr ""
+
+#: src/Privacy/Exporter.php:78
+msgid "Appointment history"
+msgstr ""
+
+#: src/Privacy/Exporter.php:82
+msgid "Event"
+msgstr ""
+
+#: src/Privacy/Exporter.php:83
+msgid "Recorded by"
+msgstr ""
+
+#: src/Privacy/Exporter.php:84
+msgid "Recorded at (UTC)"
+msgstr ""
+
+#: src/Privacy/Exporter.php:85
+#: build/admin/detail.js:17
+msgid "Details"
+msgstr ""
+
+#: src/Privacy/Exporter.php:114
+msgid "Created (UTC)"
+msgstr ""
+
+#: src/Product/ProductTab.php:58
+msgid "Bookable product"
+msgstr ""
+
+#: src/Product/ProductTab.php:64
+msgid "Slot length (minutes)"
+msgstr ""
+
+#: src/Product/ProductTab.php:72
+msgid "Must be a multiple of 15 minutes."
+msgstr ""
+
+#: src/Product/ProductTab.php:78
+msgid "Minimum slots"
+msgstr ""
+
+#: src/Product/ProductTab.php:89
+msgid "Maximum slots"
+msgstr ""
+
+#: src/Product/ProductTab.php:90
+msgid "How many times a customer can book in one order. For 2–3 hour sessions set 3 and use Per slot pricing."
+msgstr ""
+
+#: src/Product/ProductTab.php:102
+#: build/admin/settings.js:2
+msgid "Pricing"
+msgstr ""
+
+#: src/Product/ProductTab.php:104
+#: build/admin/settings.js:3
+msgid "Per slot"
+msgstr ""
+
+#: src/Product/ProductTab.php:105
+msgid "Fixed (single slot)"
+msgstr ""
+
+#: src/Product/ProductTab.php:112
+#: templates/emails/plain/slotiva-booking-details.php:23
+#: templates/emails/slotiva-booking-details.php:35
+#: templates/front/appointment-card.php:37
+#: build/admin/detail.js:17
+msgid "Location"
+msgstr ""
+
+#: src/Product/ProductTab.php:118
+msgid "Earliest booking (hours ahead)"
+msgstr ""
+
+#: src/Product/ProductTab.php:126
+msgid "Latest booking (days ahead)"
+msgstr ""
+
+#: src/Product/ProductTab.php:138
+#: build/admin/settings.js:3
+msgid "Cancellation and change policy"
+msgstr ""
+
+#: src/Product/ProductTab.php:139
+msgid "Leave empty to use the general policy."
+msgstr ""
+
+#: src/Product/ProductTab.php:221
+msgid "Slotiva: the slot length must be a multiple of 15 minutes (15 to 480)."
+msgstr ""
+
+#: src/Product/ProductTab.php:226
+msgid "Slotiva: the slot counts must be 1 ≤ minimum ≤ maximum ≤ 10."
+msgstr ""
+
+#: src/Product/ProductTab.php:229
+msgid "Slotiva: the earliest booking time cannot be negative."
+msgstr ""
+
+#: src/Product/ProductTab.php:232
+msgid "Slotiva: the latest booking day must be between 1 and 62 days ahead."
+msgstr ""
+
+#: src/Schedule/ExceptionRepository.php:67
+msgid "The date must be a valid date (YYYY-MM-DD)."
+msgstr ""
+
+#: src/Schedule/ExceptionRepository.php:71
+msgid "The type must be open or closed."
+msgstr ""
+
+#: src/Schedule/ExceptionRepository.php:82
+msgid "Both times are required, as HH:MM on a 15-minute step."
+msgstr ""
+
+#: src/Schedule/ExceptionRepository.php:85
+msgid "The start must be before the end."
+msgstr ""
+
+#: src/Schedule/ExceptionRepository.php:101
+msgid "Could not save the exception."
+msgstr ""
+
+#: src/Schedule/ExceptionRepository.php:119
+msgid "Could not delete the exception."
+msgstr ""
+
+#. translators: %d: maximum appointment length in minutes.
+#: src/Schedule/Rules.php:133
+#, php-format
+msgid "The appointment length must be at most %d minutes."
+msgstr ""
+
+#. translators: 1: field name (appointment length or buffer), 2: step in minutes.
+#: src/Schedule/Rules.php:168
+#, php-format
+msgid "%1$s must be a multiple of %2$d minutes."
+msgstr ""
+
+#: src/Schedule/Rules.php:169
+msgid "The appointment length"
+msgstr ""
+
+#: src/Schedule/Rules.php:169
+msgid "The buffer"
+msgstr ""
+
+#: src/Schedule/Rules.php:175
+msgid "The appointment length must be at least 15 minutes."
+msgstr ""
+
+#: src/Schedule/Rules.php:178
+#: build/admin/schedule.js:13
+msgid "The latest booking day must be between 1 and 62 days ahead."
+msgstr ""
+
+#: src/Schedule/Rules.php:181
+#: build/admin/schedule.js:13
+msgid "The card payment hold must be at least 15 minutes."
+msgstr ""
+
+#: src/Schedule/Rules.php:184
+msgid "Hour and month values are out of range (data retention: 1 to 120 months)."
+msgstr ""
+
+#: src/Schedule/WeeklySchedule.php:57
+msgid "The day must be 0 (Monday) to 6 (Sunday)."
+msgstr ""
+
+#: src/Schedule/WeeklySchedule.php:60
+msgid "Ranges must be a list."
+msgstr ""
+
+#: src/Schedule/WeeklySchedule.php:67
+msgid "Times must be HH:MM on a 15-minute step."
+msgstr ""
+
+#: src/Schedule/WeeklySchedule.php:70
+msgid "A range must start before it ends."
+msgstr ""
+
+#: src/Schedule/WeeklySchedule.php:84
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "Ranges on the same day must not overlap."
+msgstr ""
+
+#: src/Setup/SetupProduct.php:48
+msgid "The selected product was not found."
+msgstr ""
+
+#: src/Setup/SetupProduct.php:51
+msgid "Only simple and variable products can be made bookable."
+msgstr ""
+
+#: src/Setup/SetupProduct.php:58
+msgid "You are not allowed to edit or publish this product."
+msgstr ""
+
+#: src/Setup/SetupProduct.php:99
+msgid "Some fields are not valid."
+msgstr ""
+
+#: src/Setup/SetupProduct.php:153
+msgid "The product could not be saved. Please try again."
+msgstr ""
+
+#: src/Setup/SetupStatus.php:118
+msgid "Working hours are set."
+msgstr ""
+
+#: src/Setup/SetupStatus.php:124
+msgid "No working hours yet."
+msgstr ""
+
+#: src/Setup/SetupStatus.php:137
+msgid "The checkout page uses the Checkout block."
+msgstr ""
+
+#: src/Setup/SetupStatus.php:142
+msgid "The checkout page does not use the Checkout block."
+msgstr ""
+
+#: src/Setup/SetupStatus.php:171
+msgid "A bookable product is published."
+msgstr ""
+
+#: src/Setup/SetupStatus.php:176
+msgid "No published bookable product yet."
+msgstr ""
+
+#. translators: 1: time zone name, e.g. Europe/Istanbul; 2: current UTC offset, e.g. +03:00.
+#: src/Setup/SetupStatus.php:192
+#, php-format
+msgid "%1$s (UTC%2$s) — customers see the hours in this time zone."
+msgstr ""
+
+#. translators: %s: fixed UTC offset, e.g. +03:00.
+#: src/Setup/SetupStatus.php:198
+#, php-format
+msgid "The site uses a fixed UTC offset (%s), which does not follow daylight saving changes."
+msgstr ""
+
+#. translators: 1: number of enabled payment methods; 2: their names, comma separated.
+#: src/Setup/SetupStatus.php:226
+#, php-format
+msgid "%1$d method enabled: %2$s."
+msgid_plural "%1$d methods enabled: %2$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Setup/SetupStatus.php:234
+msgid "Turn one on in WooCommerce → Settings → Payments."
+msgstr ""
+
+#: templates/emails/plain/slotiva-admin-conflict.php:25
+#: templates/emails/slotiva-admin-conflict.php:26
+msgid "Refund the order or set a new time manually."
+msgstr ""
+
+#: templates/emails/plain/slotiva-admin-new.php:25
+#: templates/emails/slotiva-admin-new.php:26
+msgid "A new booking has been confirmed. This time slot is no longer offered to other customers."
+msgstr ""
+
+#: templates/emails/plain/slotiva-booking-details.php:21
+#: templates/emails/slotiva-booking-details.php:30
+msgid "Time zone"
+msgstr ""
+
+#: templates/emails/plain/slotiva-booking-details.php:26
+#: templates/emails/slotiva-booking-details.php:41
+#: build/admin/appointments.js:8
+#: build/admin/detail.js:17
+msgid "Customer"
+msgstr ""
+
+#: templates/emails/plain/slotiva-booking-details.php:27
+#: templates/emails/slotiva-booking-details.php:45
+msgid "Email / Phone"
+msgstr ""
+
+#: templates/emails/plain/slotiva-booking-details.php:28
+#: templates/emails/slotiva-booking-details.php:49
+#: build/admin/appointments.js:8
+msgid "Payment"
+msgstr ""
+
+#. translators: %s: order number.
+#: templates/emails/plain/slotiva-booking-details.php:37
+#: templates/emails/slotiva-booking-details.php:63
+#, php-format
+msgid "Open order #%s in the dashboard"
+msgstr ""
+
+#. translators: %s: order number.
+#: templates/emails/plain/slotiva-booking-details.php:39
+#: templates/emails/slotiva-booking-details.php:65
+#, php-format
+msgid "View order #%s"
+msgstr ""
+
+#: templates/emails/plain/slotiva-booking-details.php:44
+#: templates/emails/slotiva-booking-details.php:76
+msgid "The calendar files (.ics) are attached, one per booking."
+msgstr ""
+
+#: templates/emails/plain/slotiva-booking-details.php:44
+#: templates/emails/slotiva-booking-details.php:77
+msgid "The calendar file (.ics) is attached."
+msgstr ""
+
+#: templates/emails/plain/slotiva-customer-cancelled.php:25
+#: templates/emails/slotiva-customer-cancelled.php:26
+msgid "The bank transfer was not received before the deadline, so your booking has been cancelled and the time slot released."
+msgstr ""
+
+#: templates/emails/plain/slotiva-customer-cancelled.php:25
+#: templates/emails/slotiva-customer-cancelled.php:26
+msgid "Your booking has been cancelled."
+msgstr ""
+
+#: templates/emails/plain/slotiva-customer-confirmed.php:25
+#: templates/emails/slotiva-customer-confirmed.php:26
+msgid "Your booking is confirmed. Here are the details:"
+msgstr ""
+
+#: templates/emails/plain/slotiva-customer-reminder.php:25
+#: templates/emails/slotiva-customer-reminder.php:26
+msgid "This is a reminder of your upcoming booking:"
+msgstr ""
+
+#: templates/emails/plain/slotiva-customer-rescheduled.php:25
+#: templates/emails/slotiva-customer-rescheduled.php:26
+msgid "The time of your booking has changed. Here are the new details:"
+msgstr ""
+
+#: templates/front/appointment-card.php:22
+msgid "Your appointment"
+msgid_plural "Your appointments"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: date and time until which the slot is held.
+#: templates/front/appointment-card.php:48
+#, php-format
+msgid "Held until %s"
+msgstr ""
+
+#: templates/front/appointment-card.php:53
+msgid "Add it to your calendar:"
+msgstr ""
+
+#: templates/front/appointment-card.php:55
+msgid "Calendar file (.ics)"
+msgstr ""
+
+#: templates/front/appointment-card.php:56
+msgid "Google Calendar"
+msgstr ""
+
+#: templates/front/appointment-card.php:56
+#: build/admin/setup.js:1
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "That time was just taken. Pick another time."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "This appointment was changed elsewhere. The latest version is shown now; check it and try again."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "Another change to this order is in progress. Try again in a moment."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "That time cannot be booked: it is in the past, off the 15-minute grid or outside opening hours."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "This appointment cannot be changed in its current state."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "The payment window of this appointment cannot be extended."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "The appointment or service was not found."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "Times must be on a 15-minute step (for example 09:00, 09:15, 09:30)."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "A range must end after it starts."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "Lengths and breaks must be multiples of 15 minutes."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "One of the values is out of range. Check the numbers and try again."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:1
+#: build/admin/schedule.js:1
+#: build/admin/settings.js:1
+msgid "Something went wrong. Try again."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:3
+msgid "Choose a service first."
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:3
+msgid "Previous week"
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:3
+msgid "Next week"
+msgstr ""
+
+#: build/admin/appointments.js:1
+#: build/admin/detail.js:3
+msgid "Day"
+msgstr ""
+
+#. translators: %s: day, e.g. "Saturday, 14 November".
+#: build/admin/appointments.js:2
+#: build/admin/detail.js:4
+#, js-format
+msgid "%s, no free time"
+msgstr ""
+
+#: build/admin/appointments.js:2
+#: build/admin/detail.js:4
+#: build/checkout/index.js:12
+msgid "Loading free times…"
+msgstr ""
+
+#: build/admin/appointments.js:2
+#: build/admin/detail.js:4
+msgid "No free time this week."
+msgstr ""
+
+#. translators: %s: time, e.g. 11:30.
+#: build/admin/appointments.js:3
+#: build/admin/detail.js:5
+#, js-format
+msgid "%s (current time)"
+msgstr ""
+
+#: build/admin/appointments.js:3
+#: build/admin/appointments.js:4
+msgid "Add appointment"
+msgstr ""
+
+#: build/admin/appointments.js:3
+msgid "Enter the customer name."
+msgstr ""
+
+#: build/admin/appointments.js:3
+msgid "Pick a time."
+msgstr ""
+
+#: build/admin/appointments.js:3
+msgid "Choose a service."
+msgstr ""
+
+#: build/admin/appointments.js:3
+msgid "No bookable service"
+msgstr ""
+
+#: build/admin/appointments.js:3
+msgid "Customer name"
+msgstr ""
+
+#: build/admin/appointments.js:3
+msgid "Email the confirmation to the customer (when an email is given)"
+msgstr ""
+
+#. translators: 1: day, 2: time.
+#: build/admin/appointments.js:4
+#, js-format
+msgid "Chosen: %1$s, %2$s"
+msgstr ""
+
+#: build/admin/appointments.js:4
+#: build/checkout/index.js:6
+msgid "No time chosen yet."
+msgstr ""
+
+#: build/admin/appointments.js:4
+msgid "Adding…"
+msgstr ""
+
+#: build/admin/appointments.js:4
+msgid "(done)"
+msgstr ""
+
+#. translators: %s: day or day range, e.g. "Sun".
+#: build/admin/appointments.js:5
+#: build/admin/setup.js:4
+#, js-format
+msgid "%s closed"
+msgstr ""
+
+#. translators: %d: number of setup steps left.
+#: build/admin/appointments.js:6
+#, js-format
+msgid "%d step left"
+msgid_plural "%d steps left"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/admin/appointments.js:6
+msgid "This box disappears by itself once setup is complete."
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Finish with the wizard"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Hide"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Setup progress"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Set working hours"
+msgstr ""
+
+#: build/admin/appointments.js:6
+#: build/admin/setup.js:10
+#: build/admin/setup.js:21
+msgid "Checkout page"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Fix the checkout page"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "A bookable product"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "None yet."
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Open a product → Product data → Slotiva tab → \"Bookable product\". The selectable hours and pricing are set there too."
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Create with the wizard"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Go to products"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Today"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Upcoming"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Past"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Export CSV"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "+ Add appointment"
+msgstr ""
+
+#: build/admin/appointments.js:6
+#: build/admin/detail.js:14
+#: build/admin/schedule.js:4
+#: build/admin/settings.js:3
+msgid "Dismiss this notice."
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "This week"
+msgstr ""
+
+#: build/admin/appointments.js:6
+msgid "Appointment filter"
+msgstr ""
+
+#. translators: %d: number of appointments.
+#: build/admin/appointments.js:7
+#: build/admin/appointments.js:8
+#, js-format
+msgid "%d appointment"
+msgid_plural "%d appointments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/admin/appointments.js:8
+msgid "Previous"
+msgstr ""
+
+#: build/admin/appointments.js:8
+msgid "Next"
+msgstr ""
+
+#: build/admin/appointments.js:8
+msgid "of"
+msgstr ""
+
+#: build/admin/appointments.js:8
+msgid "Page"
+msgstr ""
+
+#: build/admin/appointments.js:8
+msgid "Appointment pages"
+msgstr ""
+
+#: build/admin/appointments.js:8
+msgid "Date / time"
+msgstr ""
+
+#: build/admin/appointments.js:8
+#: build/admin/detail.js:17
+msgid "Order"
+msgstr ""
+
+#: build/admin/appointments.js:8
+msgid "Actions"
+msgstr ""
+
+#: build/admin/appointments.js:8
+msgid "No appointments here."
+msgstr ""
+
+#: build/admin/appointments.js:8
+msgid "Open"
+msgstr ""
+
+#: build/admin/appointments.js:8
+#: build/admin/detail.js:14
+#: build/admin/detail.js:15
+msgid "Change time"
+msgstr ""
+
+#: build/admin/appointments.js:8
+#: build/admin/schedule.js:9
+msgid "Cancel"
+msgstr ""
+
+#: build/admin/appointments.js:8
+#: build/admin/detail.js:18
+msgid "Cancel this appointment? The time becomes free again; the order is not changed."
+msgstr ""
+
+#: build/admin/appointments.js:8
+#: build/admin/detail.js:18
+msgid "Cancel appointment"
+msgstr ""
+
+#: build/admin/appointments.js:8
+#: build/admin/detail.js:18
+msgid "Keep"
+msgstr ""
+
+#: build/admin/appointments.js:8
+#: build/admin/detail.js:18
+msgid "Cancelling…"
+msgstr ""
+
+#: build/admin/appointments.js:8
+#: build/admin/detail.js:18
+msgid "Appointment cancelled."
+msgstr ""
+
+#. translators: %s: time zone, e.g. "Europe/Istanbul (UTC+03:00)".
+#: build/admin/appointments.js:9
+#, js-format
+msgid "Times are in %s. An appointment awaiting payment is held until its payment window ends, then released automatically."
+msgstr ""
+
+#: build/admin/appointments.js:9
+msgid "Appointment added."
+msgstr ""
+
+#: build/admin/appointments.js:9
+#: build/admin/detail.js:18
+#: build/admin/schedule.js:15
+#: build/admin/settings.js:3
+#: build/admin/setup.js:25
+msgid "This screen could not be shown. Reload the page."
+msgstr ""
+
+#: build/admin/detail.js:1
+msgid "Already started or past"
+msgstr ""
+
+#. translators: 1: days, 2: hours.
+#: build/admin/detail.js:2
+#, js-format
+msgid "%1$d d %2$d h"
+msgstr ""
+
+#. translators: 1: hours, 2: minutes.
+#: build/admin/detail.js:3
+#, js-format
+msgid "%1$d h %2$d min"
+msgstr ""
+
+#. translators: %s: status, e.g. "Held".
+#: build/admin/detail.js:6
+#, js-format
+msgid "Created: %s"
+msgstr ""
+
+#. translators: %s: status change, e.g. "Confirmed → Cancelled".
+#: build/admin/detail.js:7
+#, js-format
+msgid "%s (by an admin)"
+msgstr ""
+
+#. translators: 1: old time, 2: new time.
+#: build/admin/detail.js:8
+#, js-format
+msgid "Time changed: %1$s → %2$s"
+msgstr ""
+
+#. translators: 1: old time, 2: new time.
+#: build/admin/detail.js:9
+#, js-format
+msgid "Time changed: %1$s → %2$s (not counted)"
+msgstr ""
+
+#. translators: 1: hours, 2: new end of the payment window.
+#: build/admin/detail.js:10
+#, js-format
+msgid "Payment window extended by %1$d h, until %2$s"
+msgstr ""
+
+#: build/admin/detail.js:10
+msgid "Confirmation handled (shop email; customer email if enabled)"
+msgstr ""
+
+#: build/admin/detail.js:10
+msgid "Cancellation handled (customer email if enabled)"
+msgstr ""
+
+#: build/admin/detail.js:10
+msgid "Reminder sent"
+msgstr ""
+
+#: build/admin/detail.js:10
+msgid "The order was paid after an admin cancelled this appointment (conflict)"
+msgstr ""
+
+#: build/admin/detail.js:10
+msgid "Personal details removed (retention period ended or erasure request)"
+msgstr ""
+
+#: build/admin/detail.js:10
+msgid "No appointment selected."
+msgstr ""
+
+#. translators: %d: number of time changes counted for this appointment.
+#: build/admin/detail.js:11
+#, js-format
+msgid "%d change used"
+msgid_plural "%d changes used"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: time left, e.g. "5 h 20 min".
+#: build/admin/detail.js:12
+#, js-format
+msgid "%s (under 24 hours)"
+msgstr ""
+
+#. translators: %s: payment state, e.g. "Manual".
+#: build/admin/detail.js:13
+#, js-format
+msgid "No order · %s"
+msgstr ""
+
+#: build/admin/detail.js:13
+msgid "Email the customer"
+msgstr ""
+
+#. translators: 1: day, e.g. "Thursday, 12 November", 2: time range.
+#: build/admin/detail.js:14
+#, js-format
+msgid "Appointment: %1$s, %2$s"
+msgstr ""
+
+#: build/admin/detail.js:14
+msgid "The new time is locked first, then the old one is released; nobody can take it in between."
+msgstr ""
+
+#: build/admin/detail.js:14
+msgid "Email the new time to the customer"
+msgstr ""
+
+#: build/admin/detail.js:14
+msgid "Count this as a change (the customer asked)"
+msgstr ""
+
+#: build/admin/detail.js:14
+msgid "New:"
+msgstr ""
+
+#: build/admin/detail.js:14
+msgid "Pick a new day and time."
+msgstr ""
+
+#. translators: 1: day, 2: time range.
+#: build/admin/detail.js:15
+#, js-format
+msgid "Time changed to %1$s, %2$s."
+msgstr ""
+
+#: build/admin/detail.js:15
+msgid "Changing…"
+msgstr ""
+
+#: build/admin/detail.js:15
+msgid "Bank transfer hold"
+msgstr ""
+
+#. translators: %s: end of the payment window.
+#: build/admin/detail.js:16
+#, js-format
+msgid "The time is held until %s while the transfer is awaited."
+msgstr ""
+
+#: build/admin/detail.js:16
+msgid "The time is held while the transfer is awaited."
+msgstr ""
+
+#: build/admin/detail.js:16
+msgid "Extend by (hours)"
+msgstr ""
+
+#. translators: %s: new end of the payment window.
+#: build/admin/detail.js:17
+#, js-format
+msgid "Payment window extended until %s."
+msgstr ""
+
+#: build/admin/detail.js:17
+msgid "Extend hold"
+msgstr ""
+
+#: build/admin/detail.js:17
+msgid "Email / phone"
+msgstr ""
+
+#: build/admin/detail.js:17
+msgid "Changes"
+msgstr ""
+
+#: build/admin/detail.js:17
+msgid "Time to start"
+msgstr ""
+
+#: build/admin/detail.js:17
+msgid "History"
+msgstr ""
+
+#: build/admin/detail.js:17
+msgid "system"
+msgstr ""
+
+#. translators: %s: user id.
+#: build/admin/detail.js:18
+#, js-format
+msgid "user #%s"
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "No history yet."
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "You can mark this appointment completed or no-show once it has started."
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "Mark completed"
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "Mark this appointment as completed?"
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "Yes, mark completed"
+msgstr ""
+
+#: build/admin/detail.js:18
+#: build/admin/setup.js:2
+msgid "Back"
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "Saving…"
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "Status updated."
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "Mark no-show"
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "Mark that the customer did not come?"
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "Yes, mark no-show"
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "Cancel appointment…"
+msgstr ""
+
+#: build/admin/detail.js:18
+msgid "Cancel this appointment? It holds no time, so no time becomes free; the order is not changed."
+msgstr ""
+
+#. translators: %d: number of appointments.
+#: build/admin/schedule.js:2
+#, js-format
+msgid "%d booked appointment (confirmed or awaiting payment) is now outside the new schedule. The appointment is kept; contact the customer if it should move."
+msgid_plural "%d booked appointments (confirmed or awaiting payment) are now outside the new schedule. The appointments are kept; contact the customers if they should move."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/admin/schedule.js:2
+msgid "Review upcoming appointments"
+msgstr ""
+
+#. translators: 1: date, 2: start time, 3: end time.
+#: build/admin/schedule.js:3
+#, js-format
+msgid "%1$s · %2$s–%3$s"
+msgstr ""
+
+#. translators: %s: date.
+#: build/admin/schedule.js:4
+#, js-format
+msgid "%s · all day"
+msgstr ""
+
+#: build/admin/schedule.js:4
+msgid "Weekly schedule"
+msgstr ""
+
+#: build/admin/schedule.js:4
+msgid "One or more ranges per day. A gap between ranges is a break."
+msgstr ""
+
+#. translators: 1: day name, 2: range number.
+#: build/admin/schedule.js:5
+#, js-format
+msgid "%1$s range %2$d start"
+msgstr ""
+
+#: build/admin/schedule.js:5
+msgid "Midnight (end of day)"
+msgstr ""
+
+#. translators: 1: day name, 2: range number.
+#: build/admin/schedule.js:6
+#, js-format
+msgid "%1$s range %2$d end"
+msgstr ""
+
+#. translators: 1: day name, 2: range number.
+#: build/admin/schedule.js:7
+#, js-format
+msgid "Remove %1$s range %2$d"
+msgstr ""
+
+#. translators: %s: day name.
+#: build/admin/schedule.js:8
+#, js-format
+msgid "Add a range to %s"
+msgstr ""
+
+#: build/admin/schedule.js:8
+msgid "+ range"
+msgstr ""
+
+#: build/admin/schedule.js:8
+#: build/admin/schedule.js:9
+#: build/admin/setup.js:12
+msgid "Closed"
+msgstr ""
+
+#: build/admin/schedule.js:8
+msgid "Closed days and extra hours"
+msgstr ""
+
+#: build/admin/schedule.js:8
+msgid "Close a holiday, a day off or a few hours, or open extra hours on one date."
+msgstr ""
+
+#: build/admin/schedule.js:8
+#: build/admin/schedule.js:9
+msgid "Exceptions"
+msgstr ""
+
+#: build/admin/schedule.js:8
+msgid "Extra open"
+msgstr ""
+
+#. translators: %s: exception date and time.
+#: build/admin/schedule.js:9
+#, js-format
+msgid "Delete %s"
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Exception deleted."
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Delete"
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "No closed days or extra hours yet."
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Type"
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Extra open hours"
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "From"
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "To"
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Note (optional)"
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "All day"
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Pick a date."
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Enter the extra opening hours: a start and a later end, on a 15-minute step."
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Enter a start and a later end on a 15-minute step, or tick \"All day\"."
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Exception added."
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Add"
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "+ Add closed or extra open time"
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Booking rules"
+msgstr ""
+
+#: build/admin/schedule.js:9
+msgid "Appointment length"
+msgstr ""
+
+#. translators: %d: minutes.
+#: build/admin/schedule.js:10
+#, js-format
+msgid "%d minutes"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "A product can set its own length on its Slotiva tab."
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "Number of hours per order and pricing are set on each product's Slotiva tab."
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "Earliest booking"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "hours ahead"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "Latest booking"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "days ahead"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "Break between appointments"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "minutes"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "Payment time for bank transfers"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "hours"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "When it runs out, the order is cancelled and the time opens again."
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "Hold time for card payments"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "If the payment does not arrive in this time, the time opens again (keep it longer than the payment provider's own time limit). The order itself is not cancelled."
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "Send a reminder email before the appointment"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "Reminder: hours before the appointment"
+msgstr ""
+
+#: build/admin/schedule.js:10
+msgid "hours before"
+msgstr ""
+
+#. translators: %s: day name.
+#: build/admin/schedule.js:11
+#: build/admin/setup.js:22
+#, js-format
+msgid "%s: times must be on a 15-minute step (for example 09:00, 09:15, 09:30)."
+msgstr ""
+
+#. translators: 1: day name, 2: range start, 3: range end.
+#: build/admin/schedule.js:12
+#: build/admin/setup.js:23
+#, js-format
+msgid "%1$s: %2$s–%3$s must end after it starts."
+msgstr ""
+
+#. translators: 1: day name, 2: first range, 3: second range.
+#: build/admin/schedule.js:13
+#: build/admin/setup.js:24
+#, js-format
+msgid "%1$s: %2$s and %3$s overlap. Ranges on the same day must not overlap."
+msgstr ""
+
+#: build/admin/schedule.js:13
+msgid "The appointment length must be a multiple of 15 minutes."
+msgstr ""
+
+#: build/admin/schedule.js:13
+msgid "The bank transfer payment time must be at least 1 hour."
+msgstr ""
+
+#: build/admin/schedule.js:13
+msgid "The reminder must be sent at least 1 hour before."
+msgstr ""
+
+#: build/admin/schedule.js:13
+msgid "The break between appointments must be 0 or a multiple of 15 minutes."
+msgstr ""
+
+#: build/admin/schedule.js:13
+msgid "The earliest booking time must be a whole number of hours (0 or more)."
+msgstr ""
+
+#: build/admin/schedule.js:13
+msgid "Changes saved."
+msgstr ""
+
+#. translators: %s: error message.
+#: build/admin/schedule.js:14
+#, js-format
+msgid "Working hours saved, but the booking rules were not: %s"
+msgstr ""
+
+#: build/admin/schedule.js:14
+msgid "Save changes"
+msgstr ""
+
+#. translators: %s: site time zone label.
+#: build/admin/schedule.js:15
+#, js-format
+msgid "Time zone: %s (Settings → General). Slotiva releases expired holds itself."
+msgstr ""
+
+#. translators: 1: minimum hours, 2: maximum hours per order.
+#: build/admin/settings.js:2
+#, js-format
+msgid "%1$d–%2$d hours"
+msgstr ""
+
+#: build/admin/settings.js:2
+msgid "1 hour"
+msgstr ""
+
+#: build/admin/settings.js:2
+msgid "Bookable products"
+msgstr ""
+
+#: build/admin/settings.js:2
+msgid "Open the setup wizard"
+msgstr ""
+
+#: build/admin/settings.js:2
+msgid "Length, pricing and how many hours can be booked in one order belong to the product."
+msgstr ""
+
+#: build/admin/settings.js:2
+msgid "Set them on each product’s Product data → Slotiva tab. General settings are below."
+msgstr ""
+
+#: build/admin/settings.js:2
+msgid "No bookable products yet"
+msgstr ""
+
+#: build/admin/settings.js:2
+msgid "Create your first bookable product"
+msgstr ""
+
+#: build/admin/settings.js:2
+msgid "Bookable products table"
+msgstr ""
+
+#: build/admin/settings.js:2
+#: build/admin/setup.js:2
+#: build/admin/setup.js:10
+#: build/admin/setup.js:18
+msgid "Product"
+msgstr ""
+
+#: build/admin/settings.js:2
+msgid "Length"
+msgstr ""
+
+#: build/admin/settings.js:2
+msgid "Per order"
+msgstr ""
+
+#: build/admin/settings.js:2
+msgid "Action"
+msgstr ""
+
+#. translators: %d: minutes.
+#. translators: %d: number of minutes.
+#: build/admin/settings.js:3
+#: build/admin/setup.js:5
+#: build/admin/setup.js:7
+#, js-format
+msgid "%d min"
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Fixed"
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Open Slotiva tab →"
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "+ New bookable product"
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Policy"
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Shown to the customer under the time picker and with the appointment on the order page. Leave it empty to show nothing. A product can replace it with its own text."
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Personal data"
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Keep personal details for"
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "months"
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "After this, the name, email and phone of past appointments are anonymised. The appointment record (date, service, status) stays for statistics."
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Delete all Slotiva data when the plugin is deleted"
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Off by default: deleting the plugin keeps appointments, working hours and settings. When on, deleting the plugin removes them for good. WooCommerce orders are never touched."
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Emails"
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Appointment emails are WooCommerce emails: turn each one on or off and edit its subject and text in the WooCommerce email settings."
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Open WooCommerce email settings"
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Keep personal details for 1 to 120 whole months."
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Settings saved."
+msgstr ""
+
+#: build/admin/settings.js:3
+msgid "Save settings"
+msgstr ""
+
+#: build/admin/setup.js:1
+msgid "Setup steps"
+msgstr ""
+
+#: build/admin/setup.js:1
+msgid "(completed)"
+msgstr ""
+
+#. translators: 1: current step number, 2: total number of steps.
+#: build/admin/setup.js:2
+#: build/admin/setup.js:3
+#, js-format
+msgid "Step %1$d / %2$d"
+msgstr ""
+
+#: build/admin/setup.js:2
+msgid "Continue"
+msgstr ""
+
+#: build/admin/setup.js:2
+msgid "Hours"
+msgstr ""
+
+#: build/admin/setup.js:2
+msgid "Checkout"
+msgstr ""
+
+#: build/admin/setup.js:2
+msgctxt "setup step"
+msgid "Done"
+msgstr ""
+
+#: build/admin/setup.js:2
+msgid "Skip for now, I’ll finish later"
+msgstr ""
+
+#: build/admin/setup.js:2
+msgid "Finish later"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgctxt "check state"
+msgid "Done"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "To do"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "Check"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "Optional"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "How to fix"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "Everything looks ready."
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "The hour picker shows at checkout. One thing needs fixing first."
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "Your checkout is ready, but review the items marked Check."
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "We checked your checkout page"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "The time zone is set"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "The time zone should be checked"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "A payment method is available"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "No payment method is enabled"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "The checkout page uses blocks"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "The checkout page uses the classic layout"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "Convert the checkout page to blocks"
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "Select the Classic Checkout block and choose “Transform into blocks”."
+msgstr ""
+
+#: build/admin/setup.js:3
+msgid "This check runs every time the step opens. If something breaks later, it also shows above the Appointments list."
+msgstr ""
+
+#: build/admin/setup.js:4
+#: build/admin/setup.js:6
+msgid "Consulting"
+msgstr ""
+
+#: build/admin/setup.js:4
+msgid "Meetings, coaching, online sessions"
+msgstr ""
+
+#: build/admin/setup.js:4
+#: build/admin/setup.js:6
+msgid "Lesson / training"
+msgstr ""
+
+#: build/admin/setup.js:4
+msgid "Private lessons, courses, workshops"
+msgstr ""
+
+#: build/admin/setup.js:4
+#: build/admin/setup.js:6
+msgid "Appointment / session"
+msgstr ""
+
+#: build/admin/setup.js:4
+msgid "Clinic, therapy, beauty"
+msgstr ""
+
+#: build/admin/setup.js:4
+#: build/admin/setup.js:6
+msgid "Another service"
+msgstr ""
+
+#: build/admin/setup.js:4
+msgid "Anything sold by the hour"
+msgstr ""
+
+#: build/admin/setup.js:5
+msgid "Other…"
+msgstr ""
+
+#: build/admin/setup.js:5
+msgid "How long does one appointment take?"
+msgstr ""
+
+#: build/admin/setup.js:5
+#: build/admin/setup.js:21
+msgid "What do you sell?"
+msgstr ""
+
+#: build/admin/setup.js:5
+msgid "We will suggest lengths and wording based on your choice. All of it can be changed."
+msgstr ""
+
+#: build/admin/setup.js:5
+msgid "Service type"
+msgstr ""
+
+#: build/admin/setup.js:5
+msgid "Minutes"
+msgstr ""
+
+#: build/admin/setup.js:5
+msgid "This is the length of one hour a customer picks. For customers who want 2–3 hours, step 3 lets you turn on “more than one hour”."
+msgstr ""
+
+#: build/admin/setup.js:5
+msgid "Change"
+msgstr ""
+
+#. translators: 1: service type, 2: minutes.
+#: build/admin/setup.js:6
+#, js-format
+msgid "%1$s · %2$d min"
+msgstr ""
+
+#: build/admin/setup.js:7
+msgid "No bookable product yet"
+msgstr ""
+
+#. translators: 1: product name, 2: price.
+#: build/admin/setup.js:8
+#, js-format
+msgid "%1$s · %2$s / hour"
+msgstr ""
+
+#. translators: 1: product name, 2: price.
+#: build/admin/setup.js:9
+#, js-format
+msgid "%1$s · %2$s"
+msgstr ""
+
+#. translators: %d: maximum hours per order.
+#: build/admin/setup.js:10
+#, js-format
+msgid "Up to %d hours per order"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "1 hour per order"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "You’re ready to take bookings."
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Almost there: open at least one day in Working hours."
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Book a test appointment yourself before your first customer: see the hour close and the emails arrive."
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Try a booking"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Edit the product"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Go to appointments"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Setup summary"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Not set"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Checkout block · ready"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Needs attention"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Weekdays 9–18"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Evenings 16–22, Mon–Sat"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Every day 10–20"
+msgstr ""
+
+#: build/admin/setup.js:10
+msgid "Weekdays with a lunch break"
+msgstr ""
+
+#. translators: %s: number of hours in a day.
+#: build/admin/setup.js:11
+#, js-format
+msgid "%s h"
+msgstr ""
+
+#. translators: %d: number of bookable start times (not hours of work).
+#: build/admin/setup.js:12
+#, js-format
+msgid "%d start time"
+msgid_plural "%d start times"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/admin/setup.js:12
+msgid "Customer sees at checkout"
+msgstr ""
+
+#: build/admin/setup.js:12
+#: build/admin/setup.js:18
+msgid "No open days yet."
+msgstr ""
+
+#: build/admin/setup.js:12
+msgid "Per day"
+msgstr ""
+
+#: build/admin/setup.js:12
+msgid "Per week"
+msgstr ""
+
+#: build/admin/setup.js:12
+msgid "Last start"
+msgstr ""
+
+#: build/admin/setup.js:12
+#: build/admin/setup.js:21
+msgid "When do you work?"
+msgstr ""
+
+#: build/admin/setup.js:12
+msgid "Start from a ready-made pattern, then adjust the days."
+msgstr ""
+
+#: build/admin/setup.js:12
+msgid "Ready-made patterns"
+msgstr ""
+
+#. translators: %s: day name.
+#: build/admin/setup.js:13
+#, js-format
+msgid "%s start"
+msgstr ""
+
+#. translators: %s: day name.
+#: build/admin/setup.js:14
+#, js-format
+msgid "%s end"
+msgstr ""
+
+#. translators: %d: number of ranges.
+#: build/admin/setup.js:15
+#, js-format
+msgid "%d range · edit in Working hours"
+msgid_plural "%d ranges · edit in Working hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of ranges.
+#: build/admin/setup.js:16
+#, js-format
+msgid "%d range"
+msgid_plural "%d ranges"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/admin/setup.js:16
+msgid "A second range such as a lunch break, holidays and days off can be added later under Slotiva → Working hours."
+msgstr ""
+
+#: build/admin/setup.js:16
+msgid "Decrease"
+msgstr ""
+
+#: build/admin/setup.js:16
+msgid "Increase"
+msgstr ""
+
+#. translators: %d: number of hours.
+#: build/admin/setup.js:17
+#, js-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/admin/setup.js:17
+msgid "One-on-one consulting"
+msgstr ""
+
+#: build/admin/setup.js:17
+msgid "Private lesson"
+msgstr ""
+
+#: build/admin/setup.js:17
+msgid "Draft"
+msgstr ""
+
+#: build/admin/setup.js:17
+msgid "Pending review"
+msgstr ""
+
+#: build/admin/setup.js:17
+msgid "Private"
+msgstr ""
+
+#: build/admin/setup.js:17
+msgid "Scheduled"
+msgstr ""
+
+#. translators: %s: "1 hour" or "2 hours".
+#: build/admin/setup.js:18
+#, js-format
+msgid "Customer picks %s"
+msgstr ""
+
+#: build/admin/setup.js:18
+msgid "A crossed-out hour is booked by another customer."
+msgstr ""
+
+#: build/admin/setup.js:18
+msgid "Selected"
+msgstr ""
+
+#: build/admin/setup.js:18
+msgid "In cart"
+msgstr ""
+
+#: build/admin/setup.js:18
+msgid "Total"
+msgstr ""
+
+#: build/admin/setup.js:18
+msgid "The hours are paid in one order; all of them are blocked in the calendar."
+msgstr ""
+
+#: build/admin/setup.js:18
+msgid "Price of one hour"
+msgstr ""
+
+#: build/admin/setup.js:18
+#: build/admin/setup.js:24
+msgid "Enter a valid price."
+msgstr ""
+
+#: build/admin/setup.js:18
+msgid "What will your customer buy?"
+msgstr ""
+
+#: build/admin/setup.js:18
+msgid "Which product"
+msgstr ""
+
+#: build/admin/setup.js:18
+msgid "Create a new product"
+msgstr ""
+
+#: build/admin/setup.js:18
+msgid "Use an existing product"
+msgstr ""
+
+#: build/admin/setup.js:18
+msgid "Choose a product…"
+msgstr ""
+
+#: build/admin/setup.js:19
+msgid "Product name"
+msgstr ""
+
+#: build/admin/setup.js:19
+msgid "This product will be published."
+msgstr ""
+
+#. translators: %d: the product's own appointment length in minutes.
+#: build/admin/setup.js:20
+#, js-format
+msgid "This product keeps its own length (%d min). Change it in the product’s Slotiva tab."
+msgstr ""
+
+#: build/admin/setup.js:20
+msgid "The prices of variable products are edited on the product itself."
+msgstr ""
+
+#: build/admin/setup.js:20
+msgid "Can a customer book more than one hour at a time?"
+msgstr ""
+
+#: build/admin/setup.js:20
+msgid "No, one hour"
+msgstr ""
+
+#: build/admin/setup.js:20
+msgid "One appointment per order. The price is fixed."
+msgstr ""
+
+#. translators: %d: most hours per order (3 or more).
+#: build/admin/setup.js:21
+#, js-format
+msgid "Yes, 2–%d hours too"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "Yes, 2 hours too"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "The price is multiplied by the number of hours."
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "At most per order"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "Price by hours"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "To change this later: Products → your product → Product data → Slotiva tab."
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "What will the customer see?"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "Service type and the length of one appointment"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "Open days and time ranges"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "Which product?"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "Price and how many hours can be booked at once"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "We check the page where the time picker appears"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "Ready"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "Product page and a test booking"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "5 steps · about 3 minutes"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "A store ready for bookings, in a few questions."
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "We will ask what you sell and when you work, set up your product together and check your checkout page. Every answer can be changed later from the normal settings screens."
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "Let’s start"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "I’ll set it up myself"
+msgstr ""
+
+#: build/admin/setup.js:21
+msgid "The appointment length must be a multiple of 15 minutes (15 to 480)."
+msgstr ""
+
+#: build/admin/setup.js:24
+msgid "Open at least one day, or start from a pattern above."
+msgstr ""
+
+#: build/admin/setup.js:24
+msgid "Choose a product first."
+msgstr ""
+
+#: build/admin/setup.js:24
+msgid "The product was not saved correctly. Please try again."
+msgstr ""
+
+#: build/admin/setup.js:24
+msgid "The setup data could not be loaded."
+msgstr ""
+
+#: build/admin/setup.js:24
+msgid "Save the product and continue"
+msgstr ""
+
+#: build/admin/setup.js:24
+msgid "Create the product and continue"
+msgstr ""
+
+#: build/admin/setup.js:24
+msgid "Run this wizard again from"
+msgstr ""
+
+#: build/admin/setup.js:24
+msgid "Slotiva → Settings → Setup wizard"
+msgstr ""
+
+#: build/admin/setup.js:24
+msgid "First-time setup guide"
+msgstr ""
+
+#: build/admin/setup.js:24
+msgid "Saving failed. Please try again."
+msgstr ""
+
+#: build/admin/setup.js:24
+msgid "I’ll do this later"
+msgstr ""
+
+#. translators: 1: completed steps, 2: total steps.
+#: build/admin/setup.js:25
+#, js-format
+msgid "%1$d of %2$d done"
+msgstr ""
+
+#: build/checkout/index.js:1
+msgid "Previous days"
+msgstr ""
+
+#: build/checkout/index.js:1
+msgid "Choose a day"
+msgstr ""
+
+#. translators: %s: date, e.g. "Tuesday, 17 November".
+#: build/checkout/index.js:2
+#, js-format
+msgid "%s, fully booked"
+msgstr ""
+
+#. translators: %s: date, e.g. "Tuesday, 17 November".
+#: build/checkout/index.js:3
+#, js-format
+msgid "%s, closed"
+msgstr ""
+
+#: build/checkout/index.js:3
+msgid "full"
+msgstr ""
+
+#: build/checkout/index.js:3
+msgid "closed"
+msgstr ""
+
+#. translators: %d: number of times chosen on this day.
+#: build/checkout/index.js:4
+#, js-format
+msgid "%d chosen"
+msgid_plural "%d chosen"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of free times on this day.
+#: build/checkout/index.js:6
+#, js-format
+msgid "%d free"
+msgid_plural "%d free"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/checkout/index.js:6
+msgid "Next days"
+msgstr ""
+
+#: build/checkout/index.js:6
+msgid "Choose a time"
+msgstr ""
+
+#: build/checkout/index.js:6
+msgid "No free times on this day."
+msgstr ""
+
+#: build/checkout/index.js:6
+msgid "Your time:"
+msgstr ""
+
+#: build/checkout/index.js:6
+msgid "Choose a day and time."
+msgstr ""
+
+#: build/checkout/index.js:6
+msgid "Your selection"
+msgstr ""
+
+#: build/checkout/index.js:6
+msgid "Your selected times"
+msgstr ""
+
+#. translators: %s: chosen time, e.g. "Tue 17 Nov · 10:00–11:00".
+#: build/checkout/index.js:7
+#, js-format
+msgid "Remove %s"
+msgstr ""
+
+#. translators: 1: number of chosen times, 2: price of one time.
+#: build/checkout/index.js:8
+#, js-format
+msgid "%1$d × %2$s"
+msgstr ""
+
+#: build/checkout/index.js:8
+msgid "The quantity in your cart follows the number of times you choose."
+msgstr ""
+
+#: build/checkout/index.js:8
+msgid "Some of your chosen times overlap. Remove one and try again."
+msgstr ""
+
+#: build/checkout/index.js:8
+msgid "The quantity in your cart did not match the number of chosen times. We have updated it; please place your order again."
+msgstr ""
+
+#: build/checkout/index.js:8
+#: build/checkout/index.js:9
+msgid "Choose a day and time for your booking."
+msgstr ""
+
+#: build/checkout/index.js:8
+msgid "The number of chosen times is not allowed for this booking. Please adjust your selection."
+msgstr ""
+
+#: build/checkout/index.js:8
+msgid "One of your chosen times can no longer be booked. We refreshed the free times; choose again. Your details are kept."
+msgstr ""
+
+#: build/checkout/index.js:8
+msgid "Your chosen times could not be checked. We refreshed the free times; choose again. Your details are kept."
+msgstr ""
+
+#. translators: %d: minimum number of times.
+#: build/checkout/index.js:9
+#, js-format
+msgid "Choose at least %d time for your booking."
+msgid_plural "Choose at least %d times for your booking."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/checkout/index.js:9
+msgid "We could not update the quantity in your cart. Please change your selection or try again."
+msgstr ""
+
+#. translators: %s: the lost time, e.g. "Tuesday, 17 November, 10:00".
+#: build/checkout/index.js:10
+#, js-format
+msgid "%s was just taken by someone else. We refreshed the free times; choose a new time. Your details are kept."
+msgstr ""
+
+#: build/checkout/index.js:10
+msgid "One of your chosen times was just taken by someone else. We refreshed the free times; choose again. Your details are kept."
+msgstr ""
+
+#: build/checkout/index.js:10
+msgid "Choose your times"
+msgstr ""
+
+#: build/checkout/index.js:10
+msgid "Choose your time"
+msgstr ""
+
+#. translators: %d: maximum number of times.
+#: build/checkout/index.js:11
+#, js-format
+msgid "Choose one or more times, on different days if you like. At most %d."
+msgstr ""
+
+#. translators: %d: session length in minutes.
+#: build/checkout/index.js:12
+#, js-format
+msgid "%d-minute session."
+msgstr ""
+
+#: build/checkout/index.js:12
+msgid "Free times could not be loaded."
+msgstr ""
+
+#: build/checkout/index.js:12
+msgid "Try again"
+msgstr ""
+
+#. translators: %d: number of days in the booking horizon.
+#: build/checkout/index.js:13
+#, js-format
+msgid "There are no free times in the next %d day. Write to us and we will find a time that suits you."
+msgid_plural "There are no free times in the next %d days. Write to us and we will find a time that suits you."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/checkout/index.js:13
+msgid "Contact us"
+msgstr ""
+
+#: build/checkout/index.js:13
+msgid "Ordering is not possible right now."
+msgstr ""
+
+#. translators: 1: date, 2: session length in minutes.
+#: build/checkout/index.js:14
+#, js-format
+msgid "%1$s · free times (%2$d min)"
+msgstr ""
+
+#. translators: %d: maximum number of times.
+#: build/checkout/index.js:15
+#, js-format
+msgid "You can choose at most %d times; remove one to add another."
+msgstr ""
+
+#: src-react/checkout/block.json
+msgctxt "block title"
+msgid "Appointment time picker"
+msgstr ""
+
+#: src-react/checkout/block.json
+msgctxt "block description"
+msgid "Lets the customer choose the appointment time on the Checkout block."
+msgstr ""

@@ -1,0 +1,145 @@
+# MHM Slotiva yerel yigini (sekil B: depo koku eklentinin kendisi, yigin docker/ altinda).
+# Eklenti repo kokunden /wp-content/plugins/mhm-slotiva'ya baglanir. Sirlar docker/.env'den (${VAR}); .env takip edilmez.
+# `name:` acik: dosya docker/ icinde oldugundan Compose yoksa "docker-wordpress-1" uretirdi.
+name: slotiva-dev
+
+# wordpress ve wpcli AYNI wp-config.php'yi okur; sabitler ikisinde de tanimli olmali (wp-config.php'yi hangisi once
+# yazarsa yazsin, CONFIG_EXTRA calisma aninda env'den eval edilir). Yoksa `wp eval` sabiti goremez.
+x-config-extra: &config_extra |
+    define( 'WP_ENVIRONMENT_TYPE', 'local' );
+    define( 'WP_DEBUG_LOG', true );
+    define( 'WP_DEBUG_DISPLAY', false );
+    define( 'SCRIPT_DEBUG', true );
+    if (isset($$_SERVER['HTTP_HOST']) && !empty($$_SERVER['HTTP_HOST'])) {
+        if (!defined('WP_HOME'))    define('WP_HOME',    'http://' . $$_SERVER['HTTP_HOST']);
+        if (!defined('WP_SITEURL')) define('WP_SITEURL', 'http://' . $$_SERVER['HTTP_HOST']);
+    }
+
+
+services:
+  db:
+    image: mysql:8.4
+    ports:
+      - "${DB_PORT}:3306"
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - dbdata:/var/lib/mysql
+    # 8.4 mysql_native_password'u varsayilan kapali yollar.
+    command: --mysql-native-password=ON
+    networks:
+      - slotiva-net
+
+  wordpress:
+    image: wordpress:7.1-php8.3-apache
+    command: >
+      bash -c '
+        ( until [ -f /var/www/html/wp-load.php ]; do sleep 1; done;
+          find /var/www/html -maxdepth 1 -user root -exec chown www-data:www-data {} + 2>/dev/null || true;
+          chown -R www-data:www-data /var/www/html/wp-content 2>/dev/null || true
+        ) &
+        exec docker-entrypoint.sh apache2-foreground
+      '
+    depends_on:
+      - db
+    labels:
+      - "traefik.enable=true"
+      # 11c yerel adres standardı (2026-11-15): kanonik ad slotiva-dev.localhost; eski slotiva.localhost ayrı router + yönlendirme (WP tek adı görsün).
+      - "traefik.http.routers.slotiva.rule=Host(`slotiva-dev.localhost`)"
+      - "traefik.http.routers.slotiva-eski.rule=Host(`slotiva.localhost`)"
+      - "traefik.http.routers.slotiva-eski.entrypoints=web"
+      - "traefik.http.routers.slotiva-eski.service=slotiva"
+      - "traefik.http.routers.slotiva-eski.middlewares=slotiva-eski-yonlendir"
+      - "traefik.http.middlewares.slotiva-eski-yonlendir.redirectregex.regex=^http://slotiva\\.localhost/(.*)"
+      - "traefik.http.middlewares.slotiva-eski-yonlendir.redirectregex.replacement=http://slotiva-dev.localhost/$${1}"
+      - "traefik.http.middlewares.slotiva-eski-yonlendir.redirectregex.permanent=false"
+      - "traefik.http.routers.slotiva.entrypoints=web"
+      - "traefik.http.services.slotiva.loadbalancer.server.port=80"
+    ports:
+      - "${WP_PORT}:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DEBUG: 1
+      MAILPIT_HOST: mailpit
+      MAILPIT_PORT: 1025
+      # Ortam degiskeni sabit DEGILDIR: WP_ENVIRONMENT_TYPE ve lisans taban adresi define() ile sabitlenir.
+      WORDPRESS_CONFIG_EXTRA: *config_extra
+    volumes:
+      - wpdata:/var/www/html
+      - ../:/var/www/html/wp-content/plugins/mhm-slotiva
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+      - ./mu-plugins:/var/www/html/wp-content/mu-plugins
+    networks:
+      - slotiva-net
+      - traefik-proxy
+
+  wpcli:
+    build:
+      context: .
+      dockerfile: Dockerfile.cli
+    # www-data olarak kosar: root'un urettigi dosyalar WP admin guncellemesini kirar.
+    user: "33:33"
+    depends_on:
+      - db
+      - wordpress
+    environment:
+      HOME: /tmp
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_CONFIG_EXTRA: *config_extra
+      # Test DB ayri (testler tablolari SILER); seed.sh olusturur ve yetki verir.
+      WP_TESTS_DB_NAME: ${WP_TESTS_DB_NAME}
+      WP_TESTS_DB_USER: ${MYSQL_USER}
+      WP_TESTS_DB_PASS: ${MYSQL_PASSWORD}
+      WP_TESTS_DB_HOST: db
+      WP_TESTS_DIR: /opt/wordpress-tests-lib
+      MAILPIT_HOST: mailpit
+      MAILPIT_PORT: 1025
+    volumes:
+      - wpdata:/var/www/html
+      - ../:/var/www/html/wp-content/plugins/mhm-slotiva
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+      - ./mu-plugins:/var/www/html/wp-content/mu-plugins
+      - ./mysql-client.cnf:/etc/mysql/conf.d/99-client-no-ssl.cnf:ro
+    working_dir: /var/www/html/wp-content/plugins/mhm-slotiva
+    command: ["sleep", "infinity"]
+    networks:
+      - slotiva-net
+
+  phpmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      UPLOAD_LIMIT: 128M
+    ports:
+      - "${PMA_PORT}:80"
+    networks:
+      - slotiva-net
+
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - "${MAILPIT_PORT}:8025"
+    networks:
+      - slotiva-net
+
+volumes:
+  wpdata:
+  dbdata:
+
+networks:
+  slotiva-net:
+    name: slotiva-net
+  traefik-proxy:
+    external: true
+    name: traefik-proxy

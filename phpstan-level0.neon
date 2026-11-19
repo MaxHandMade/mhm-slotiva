@@ -1,0 +1,8 @@
+# PHPStan seviye 0, taban dosyası YOK: Lite'ın temel kapısı.
+# Seviye 6 ignoreErrors girdisi (AS null-args) seviye 0'da eşleşmez; eşleşmeyen-ignore raporu bu yüzden kapalı. Koşu: composer phpstan:level0
+includes:
+	- phpstan.neon.dist
+
+parameters:
+	level: 0
+	reportUnmatchedIgnoredErrors: false

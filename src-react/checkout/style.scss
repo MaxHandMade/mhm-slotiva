@@ -1,0 +1,498 @@
+/**
+ * Slot picker. Theme-neutral. Theme override contract: set any of the
+ * `--slotiva-*` custom properties below on `:root` (or any ancestor, or
+ * `.slotiva-picker`). The picker never defines them itself; every use
+ * reads `var(--slotiva-x, <default>)`, defaults from the theme palette
+ * (`--wp--preset--color--*`) or `currentcolor`.
+ *
+ * --slotiva-accent, --slotiva-on-accent, --slotiva-surface,
+ * --slotiva-border, --slotiva-border-soft, --slotiva-muted,
+ * --slotiva-skeleton, --slotiva-alert, --slotiva-radius, --slotiva-gap
+ *
+ * `--slotiva-ink` / `--slotiva-paper` are written by the picker script (real text colour and page background);
+ * they only feed the palette-less fallback of accent / on-accent.
+ *
+ * `--slotiva-palette-white` is internal (set on `.slotiva-picker`): white when the theme has a primary or contrast
+ * colour, otherwise invalid. So a theme with primary but no base keeps white text on the accent; only a palette-less
+ * theme gets the page paper colour.
+ */
+$accent: var(
+	--slotiva-accent,
+	var(
+		--wp--preset--color--primary,
+		var(
+			--wp--preset--color--contrast,
+			var(--slotiva-ink, currentcolor)
+		)
+	)
+);
+$on-accent: var(
+	--slotiva-on-accent,
+	var(
+		--wp--preset--color--base,
+		var(--slotiva-palette-white, var(--slotiva-paper, #fff))
+	)
+);
+$surface: var(--slotiva-surface, transparent);
+$border: var(
+	--slotiva-border,
+	color-mix(in srgb, currentcolor 28%, transparent)
+);
+$border-soft: var(
+	--slotiva-border-soft,
+	color-mix(in srgb, currentcolor 14%, transparent)
+);
+$muted: var(--slotiva-muted, color-mix(in srgb, currentcolor 72%, transparent));
+$skeleton: var(
+	--slotiva-skeleton,
+	color-mix(in srgb, currentcolor 10%, transparent)
+);
+$alert: var(
+	--slotiva-alert,
+	var(--wp--preset--color--vivid-red, #cc1818)
+);
+$radius: var(--slotiva-radius, 6px);
+$gap: var(--slotiva-gap, 8px);
+
+/* Zero-specificity reset so component classes set their own margins. */
+:where(.slotiva-picker) p {
+	margin: 0;
+}
+
+.slotiva-picker {
+	// An undefined var() without a fallback makes this custom property invalid, so the on-accent chain falls through.
+	--slotiva-palette-white: color-mix(
+		in srgb,
+		var(--wp--preset--color--primary, var(--wp--preset--color--contrast))
+			0%,
+		#fff
+	);
+	container: slotiva-picker / inline-size;
+	box-sizing: border-box;
+	margin: 0 0 1.5em;
+	padding: 24px;
+	border: 1px solid color-mix(in srgb, #{$accent} 55%, transparent);
+	border-radius: calc(#{$radius} + 4px);
+	background: $surface;
+	color: inherit;
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	button {
+		font: inherit;
+		color: inherit;
+		cursor: pointer;
+	}
+
+	button:focus-visible,
+	a:focus-visible {
+		outline: 2px solid $accent;
+		outline-offset: 2px;
+	}
+
+	button:disabled {
+		cursor: not-allowed;
+	}
+
+}
+
+.slotiva-picker__head {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 4px 16px;
+	margin-bottom: 6px;
+}
+
+.slotiva-picker__title {
+	margin: 0;
+	font-size: 1.35em;
+	line-height: 1.2;
+}
+
+.slotiva-picker__tz {
+	font-size: 0.75em;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: $muted;
+}
+
+.slotiva-picker__intro {
+	margin-bottom: 18px;
+	color: $muted;
+	line-height: 1.55;
+}
+
+.slotiva-picker__muted {
+	color: $muted;
+}
+
+/* Day strip */
+
+.slotiva-picker__days {
+	display: flex;
+	align-items: center;
+	gap: $gap;
+	margin-bottom: 18px;
+}
+
+.slotiva-picker__nav {
+	flex: 0 0 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	border: 1px solid $border;
+	border-radius: $radius;
+	background: transparent;
+}
+
+.slotiva-picker__day-list {
+	flex: 1 1 auto;
+	min-width: 0;
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: calc((100% - 6 * #{$gap}) / 7);
+	gap: $gap;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.slotiva-picker__day {
+	scroll-snap-align: start;
+	min-height: 72px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2px;
+	padding: 8px 2px;
+	border: 1px solid $border;
+	border-radius: calc(#{$radius} + 2px);
+	background: transparent;
+	line-height: 1.1;
+
+	&.is-active {
+		border: 2px solid $accent;
+		background: $accent;
+		color: $on-accent;
+
+		.slotiva-picker__dow,
+		.slotiva-picker__badge {
+			color: inherit;
+		}
+	}
+
+	&.has-picks:not(.is-active) {
+		border-color: $accent;
+	}
+
+	&.is-closed {
+		border-style: dashed;
+		border-color: $border-soft;
+		opacity: 0.6;
+	}
+}
+
+.slotiva-picker__dow {
+	font-size: 0.75em;
+	color: $muted;
+}
+
+.slotiva-picker__num {
+	font-size: 1.5em;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.slotiva-picker__badge {
+	font-size: 0.7em;
+	white-space: nowrap;
+	color: $muted;
+}
+
+/* Times */
+
+.slotiva-picker__day-title {
+	margin-bottom: 10px;
+	font-size: 0.9em;
+	color: $muted;
+}
+
+.slotiva-picker__times,
+.slotiva-picker__skeleton-times {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	gap: $gap;
+}
+
+.slotiva-picker__time {
+	height: 44px;
+	padding: 0 4px;
+	border: 1px solid $border;
+	border-radius: $radius;
+	background: transparent;
+	font-size: 0.95em;
+	white-space: nowrap;
+
+	&.is-selected {
+		border: 2px solid $accent;
+		background: $accent;
+		color: $on-accent;
+		font-weight: 600;
+	}
+
+	&:disabled {
+		opacity: 0.4;
+	}
+}
+
+.slotiva-picker__time-meta {
+	display: block;
+	font-size: 0.8em;
+	opacity: 0.8;
+}
+
+.slotiva-picker__cap {
+	margin-top: 12px;
+	font-size: 0.875em;
+	color: $muted;
+}
+
+/* Multi mode: times + "Your selection" side by side (frame 1b) */
+
+.slotiva-picker__cols {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+	align-items: flex-start;
+
+	.slotiva-picker__main {
+		flex: 999 1 360px;
+		min-width: 0;
+	}
+
+	.slotiva-picker__times,
+	.slotiva-picker__skeleton-times {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+.slotiva-picker__summary {
+	flex: 1 1 240px;
+	min-width: 0;
+	padding: 18px;
+	border: 1px solid $border-soft;
+	border-radius: calc(#{$radius} + 2px);
+}
+
+.slotiva-picker__summary-title {
+	margin: 0 0 12px;
+	font-size: 1.05em;
+}
+
+.slotiva-picker__picked {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 8px;
+		padding: 8px 0;
+		border-bottom: 1px solid $border-soft;
+		font-size: 0.9em;
+	}
+}
+
+.slotiva-picker__remove {
+	flex: 0 0 32px;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	border: 1px solid $border;
+	border-radius: $radius;
+	background: transparent;
+	line-height: 1;
+}
+
+.slotiva-picker__line-total {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 8px;
+	margin-top: 12px;
+	font-weight: 600;
+}
+
+.slotiva-picker__note {
+	margin-top: 10px;
+	font-size: 0.8em;
+}
+
+/* Footer */
+
+.slotiva-picker__foot {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px 16px;
+	margin-top: 20px;
+	padding-top: 16px;
+	border-top: 1px solid $border-soft;
+
+	&:empty {
+		display: none;
+	}
+}
+
+.slotiva-picker__policy {
+	max-width: 360px;
+	font-size: 0.8em;
+	color: $muted;
+}
+
+/* States (frame 3) */
+
+.slotiva-picker__alert {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	margin-bottom: 18px;
+	padding: 14px 16px;
+	border: 1px solid $alert;
+	border-left-width: 4px;
+	border-radius: $radius;
+	background: color-mix(in srgb, #{$alert} 8%, transparent);
+
+	svg {
+		flex: 0 0 20px;
+		margin-top: 2px;
+		color: $alert;
+	}
+}
+
+.slotiva-picker__error {
+	margin-top: 12px;
+	color: $alert;
+	font-weight: 600;
+}
+
+.slotiva-picker.has-error {
+	border-color: $alert;
+}
+
+.slotiva-picker__contact {
+	display: inline-block;
+	margin-bottom: 14px;
+	color: $accent;
+	font-weight: 600;
+}
+
+.slotiva-picker__blocked {
+	padding: 14px;
+	border-radius: $radius;
+	background: $skeleton;
+	text-align: center;
+	color: $muted;
+}
+
+.slotiva-picker__retry {
+	margin-top: 12px;
+	height: 44px;
+	padding: 0 18px;
+	border: 1px solid $border;
+	border-radius: $radius;
+	background: transparent;
+}
+
+.slotiva-picker__skeleton-days {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: $gap;
+	margin: 12px 0 18px;
+}
+
+.slotiva-picker__skeleton-times {
+	margin-bottom: 14px;
+}
+
+.slotiva-picker__skeleton {
+	border-radius: $radius;
+	background: $skeleton;
+	animation: slotiva-pulse 1.4s ease-in-out infinite;
+
+	&--day {
+		height: 72px;
+	}
+
+	&--time {
+		height: 44px;
+	}
+}
+
+@keyframes slotiva-pulse {
+
+	50% {
+		opacity: 0.45;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.slotiva-picker__skeleton {
+		animation: none;
+	}
+
+	.slotiva-picker__day-list {
+		scroll-behavior: auto;
+	}
+}
+
+/* Narrow (frame 2): scrolling day strip, no arrows, 3-column times.
+   Queried on the picker's own width, so it also applies in a narrow
+   checkout column on a wide screen. */
+
+@media (max-width: 600px) {
+
+	.slotiva-picker {
+		padding: 18px 16px;
+	}
+}
+
+@container slotiva-picker (max-width: 520px) {
+
+	.slotiva-picker__nav {
+		display: none;
+	}
+
+	.slotiva-picker__day-list {
+		grid-auto-columns: 64px;
+		padding-bottom: 4px;
+	}
+
+	.slotiva-picker__times,
+	.slotiva-picker__skeleton-times,
+	.slotiva-picker__cols .slotiva-picker__times,
+	.slotiva-picker__cols .slotiva-picker__skeleton-times {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.slotiva-picker__time {
+		height: 48px;
+	}
+}

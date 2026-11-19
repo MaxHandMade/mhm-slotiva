@@ -1,0 +1,73 @@
+name: WP trunk canary
+
+# Ortak MHM test tabanı, madde 4: WordPress trunk'a karşı HAFTALIK koşu; çekirdekteki bir değişiklik
+# eklentiyi bozuyorsa sürümden önce burada görülür.
+#
+# 🔴 Üç özellik bu dosyanın amacıdır; "temizleyip" kaldırma:
+#
+#  1. YALNIZ zamanlama + elle tetikleme. Trunk her commit'te değişir; pull request'te kırmızı bir
+#     canary, incelenen değişiklikte olmayan bir kusur için işi bloke ederdi.
+#  2. `continue-on-error` YOK. İş seviyesinde bu bayrak koşuyu `success` raporlar, başarılı koşu için
+#     GitHub e-posta göndermez; böyle bir canary asla duyulmaz. Kırmızı canary mesajın kendisidir.
+#  3. Kurulan çekirdeğin trunk OLDUĞU doğrulanır: bin/install-wp-tests.sh, wp-includes/version.php
+#     ön-sürüm eki taşımıyorsa başarısız olur. Sürüme çözülen bir trunk indirmesi aksi halde
+#     yeni hiçbir şey ölçmeden geçerdi.
+#
+# Bilinen sessiz durma: GitHub, 60 gün etkinlik olmayan depoda zamanlanmış iş akışlarını kapatır.
+# Koşu geçmişinin susması belirtidir; Actions -> "WP trunk canary" altından yeniden etkinleştirin.
+
+on:
+  schedule:
+    # Pazartesi 05:17 UTC -- tam saatte değil, zamanlanmış koşuların daha az kuyruğa girdiği zamanda.
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  trunk:
+    name: PHPUnit (PHP 8.4 / WP trunk / WC latest)
+    # GitHub-hosted on purpose: a scheduled run must work while the local runner machine is off
+    # (mhm-ci-runner README), and the job uses services/setup-php.
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v7
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mysqli
+          tools: composer:v2
+          coverage: none
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Install WordPress trunk test library + WooCommerce
+        env:
+          WC_VERSION: latest
+          WP_CORE_DIR: /tmp/wordpress
+        run: bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1:3306 trunk
+
+      - name: Run PHPUnit
+        env:
+          WP_TESTS_DIR: /tmp/wordpress-tests-lib
+        run: composer test

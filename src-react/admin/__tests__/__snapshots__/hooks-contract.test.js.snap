@@ -1,0 +1,524 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders_identically_without_filters detail 1`] = `
+"<div>
+  <div class=slotiva-detail>
+    <div class=mhmui-page-header>
+      <a class=mhmui-page-header__back>
+        <span aria-hidden>
+          "#"
+        "#"
+      <div class=mhmui-page-header__title-row>
+        <h1 class=mhmui-page-header__title>
+          "#"
+        <div class=mhmui-page-header__badges>
+          <span class=mhmui-status mhmui-status--success>
+            "#"
+          <span class=mhmui-status mhmui-status--success>
+            "#"
+    <div class=mhmui-detail-layout>
+      <div class=mhmui-detail-layout__main>
+        <section class=mhmui-widget>
+          <header class=mhmui-widget__header>
+            <h3 class=mhmui-widget__title>
+              "#"
+          <div class=mhmui-widget__body>
+            <dl class=mhmui-detail-list mhmui-detail-list--inline>
+              <div class=mhmui-detail-list__item>
+                <dt class=mhmui-detail-list__label>
+                  "#"
+                <dd class=mhmui-detail-list__value>
+                  "#"
+              <div class=mhmui-detail-list__item>
+                <dt class=mhmui-detail-list__label>
+                  "#"
+                <dd class=mhmui-detail-list__value>
+                  "#"
+              <div class=mhmui-detail-list__item>
+                <dt class=mhmui-detail-list__label>
+                  "#"
+                <dd class=mhmui-detail-list__value>
+                  "#"
+              <div class=mhmui-detail-list__item>
+                <dt class=mhmui-detail-list__label>
+                  "#"
+                <dd class=mhmui-detail-list__value>
+                  "#"
+              <div class=mhmui-detail-list__item>
+                <dt class=mhmui-detail-list__label>
+                  "#"
+                <dd class=mhmui-detail-list__value>
+                  <a>
+                    "#"
+                    "#"
+                  "#"
+              <div class=mhmui-detail-list__item>
+                <dt class=mhmui-detail-list__label>
+                  "#"
+                <dd class=mhmui-detail-list__value>
+                  "#"
+              <div class=mhmui-detail-list__item>
+                <dt class=mhmui-detail-list__label>
+                  "#"
+                <dd class=mhmui-detail-list__value>
+                  <span aria-hidden class=mhmui-detail-list__mark mhmui-detail-list__mark--warning>
+                  "#"
+            <h3 class=slotiva-detail__subhead id=slotiva-history>
+              "#"
+            <ol aria-labelledby class=slotiva-history>
+              <li>
+                "#"
+                "#"
+                "#"
+                <span class=slotiva-muted>
+                  "#"
+                  "#"
+                  "#"
+            <div class=slotiva-detail__actions>
+              <p class=slotiva-muted id=slotiva-status-early>
+                "#"
+              <div class=mhmui-confirm mhmui-confirm--primary>
+                <button aria-describedby aria-disabled class=button mhmui-confirm__trigger type=button>
+                  "#"
+              <div class=mhmui-confirm mhmui-confirm--secondary>
+                <button aria-describedby aria-disabled class=button mhmui-confirm__trigger type=button>
+                  "#"
+              <div class=mhmui-confirm mhmui-confirm--danger>
+                <button class=button mhmui-confirm__trigger type=button>
+                  "#"
+      <aside aria-label class=mhmui-detail-layout__aside>
+        <div id=reschedule>
+          <section class=mhmui-widget>
+            <header class=mhmui-widget__header>
+              <h3 class=mhmui-widget__title>
+                "#"
+                <span class=mhmui-widget__subtitle>
+                  "#"
+            <div class=mhmui-widget__body>
+              <div aria-busy class=slotiva-picker>
+                <div class=slotiva-picker__nav>
+                  <button class=button disabled type=button>
+                    <span aria-hidden>
+                      "#"
+                    "#"
+                  <button class=button type=button>
+                    "#"
+                    <span aria-hidden>
+                      "#"
+                <div aria-label class=slotiva-picker__days role=group>
+                  <button aria-label aria-pressed class=slotiva-picker__day disabled type=button>
+                    <span>
+                      "#"
+                    <strong>
+                      "#"
+                  <button aria-label aria-pressed class=slotiva-picker__day disabled type=button>
+                    <span>
+                      "#"
+                    <strong>
+                      "#"
+                  <button aria-label aria-pressed class=slotiva-picker__day disabled type=button>
+                    <span>
+                      "#"
+                    <strong>
+                      "#"
+                  <button aria-label aria-pressed class=slotiva-picker__day disabled type=button>
+                    <span>
+                      "#"
+                    <strong>
+                      "#"
+                  <button aria-label aria-pressed class=slotiva-picker__day disabled type=button>
+                    <span>
+                      "#"
+                    <strong>
+                      "#"
+                  <button aria-label aria-pressed class=slotiva-picker__day disabled type=button>
+                    <span>
+                      "#"
+                    <strong>
+                      "#"
+                  <button aria-label aria-pressed class=slotiva-picker__day disabled type=button>
+                    <span>
+                      "#"
+                    <strong>
+                      "#"
+                <p class=slotiva-picker__hint>
+                  "#"
+              <p class=slotiva-check>
+                <input id=slotiva-move-notify type=checkbox>
+                <label>
+                  "#"
+              <p class=slotiva-check>
+                <input id=slotiva-move-count type=checkbox>
+                <label>
+                  "#"
+              <div class=slotiva-detail__move>
+                <p>
+                  "#"
+                <button aria-disabled class=button button-primary type=button>
+                  "#"
+"
+`;
+
+exports[`renders_identically_without_filters list 1`] = `
+"<div>
+  <div class=slotiva-appointments>
+    <div class=mhmui-page-header>
+      <div class=mhmui-page-header__title-row>
+        <h1 class=mhmui-page-header__title>
+          "#"
+        <div class=mhmui-page-header__actions>
+          <a class=mhmui-button mhmui-button--secondary mhmui-button--md>
+            "#"
+          <button class=mhmui-button mhmui-button--primary mhmui-button--md type=button>
+            "#"
+    <div class=mhmui-stats-grid mhmui-stats-grid--pairs>
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-calendar>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-calendar-alt>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-clock>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-store>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+    <nav aria-label class=mhmui-tabs mhmui-tabs--underline>
+      <a class=mhmui-tabs__tab>
+        "#"
+      <a aria-current class=mhmui-tabs__tab mhmui-tabs__tab--current>
+        "#"
+        <span class=mhmui-tabs__badge>
+          <span aria-hidden>
+            "#"
+          <span class=mhmui-tabs__badge-sr>
+            "#"
+      <a class=mhmui-tabs__tab>
+        "#"
+      <a class=mhmui-tabs__tab>
+        "#"
+    <div class=mhmui-table-card>
+      <div class=mhmui-table-wrap mhmui-table-wrap--stack>
+        <table class=mhmui-table mhmui-table--stack slotiva-appointments__table role=table>
+          <caption class=mhmui-table__caption mhmui-table__caption--hidden>
+            "#"
+          <thead role=rowgroup>
+            <tr role=row>
+              <th aria-sort class=mhmui-table__th mhmui-table__th--sortable role=columnheader>
+                <button class=mhmui-table__sort type=button>
+                  "#"
+                  <svg aria-hidden class=mhmui-table__sort-icon mhmui-table__sort-icon--asc>
+                    <path>
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                <span class=screen-reader-text>
+                  "#"
+          <tbody role=rowgroup>
+            <tr role=row>
+              <td data-label role=cell>
+                <strong>
+                  "#"
+                <br>
+                <span class=slotiva-muted>
+                  "#"
+              <td data-label role=cell>
+                "#"
+                <br>
+                <span class=slotiva-muted>
+                  "#"
+              <td data-label role=cell>
+                "#"
+              <td data-label role=cell>
+                <span class=mhmui-status mhmui-status--success>
+                  "#"
+              <td data-label role=cell>
+                <span class=mhmui-status mhmui-status--success>
+                  "#"
+              <td data-label role=cell>
+                <a>
+                  "#"
+              <td class=slotiva-row-actions data-label role=cell>
+                <a>
+                  "#"
+                <a>
+                  "#"
+                <div class=mhmui-confirm mhmui-confirm--danger mhmui-confirm--compact>
+                  <button class=button mhmui-confirm__trigger type=button>
+                    "#"
+            <tr role=row>
+              <td data-label role=cell>
+                <strong>
+                  "#"
+                <br>
+                <span class=slotiva-muted>
+                  "#"
+              <td data-label role=cell>
+                "#"
+              <td data-label role=cell>
+                "#"
+              <td data-label role=cell>
+                <span class=mhmui-status mhmui-status--success>
+                  "#"
+              <td data-label role=cell>
+                <span class=mhmui-status mhmui-status--success>
+                  "#"
+              <td data-label role=cell>
+                <span class=slotiva-muted>
+                  "#"
+              <td class=slotiva-row-actions data-label role=cell>
+                <a>
+                  "#"
+                <a>
+                  "#"
+                <div class=mhmui-confirm mhmui-confirm--danger mhmui-confirm--compact>
+                  <button class=button mhmui-confirm__trigger type=button>
+                    "#"
+      <nav aria-label class=mhmui-pagination mhmui-pagination--footer>
+        <span class=mhmui-pagination__summary>
+          "#"
+        <div class=mhmui-pagination__controls>
+          <button class=mhmui-button mhmui-button--secondary mhmui-button--sm mhmui-pagination__button disabled type=button>
+            <span aria-hidden>
+              "#"
+            "#"
+          <span class=mhmui-pagination__status>
+            "#"
+            "#"
+            "#"
+            "#"
+          <button class=mhmui-button mhmui-button--secondary mhmui-button--sm mhmui-pagination__button disabled type=button>
+            "#"
+            <span aria-hidden>
+              "#"
+    <p class=slotiva-muted>
+      "#"
+"
+`;
+
+exports[`renders_identically_without_filters list loading and empty states: empty 1`] = `
+"<div>
+  <div class=slotiva-appointments>
+    <div class=mhmui-page-header>
+      <div class=mhmui-page-header__title-row>
+        <h1 class=mhmui-page-header__title>
+          "#"
+        <div class=mhmui-page-header__actions>
+          <a class=mhmui-button mhmui-button--secondary mhmui-button--md>
+            "#"
+          <button class=mhmui-button mhmui-button--primary mhmui-button--md type=button>
+            "#"
+    <div class=mhmui-stats-grid mhmui-stats-grid--pairs>
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-calendar>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-calendar-alt>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-clock>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-store>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+    <nav aria-label class=mhmui-tabs mhmui-tabs--underline>
+      <a class=mhmui-tabs__tab>
+        "#"
+      <a aria-current class=mhmui-tabs__tab mhmui-tabs__tab--current>
+        "#"
+      <a class=mhmui-tabs__tab>
+        "#"
+      <a class=mhmui-tabs__tab>
+        "#"
+    <div class=mhmui-table-card>
+      <div class=mhmui-table-wrap mhmui-table-wrap--stack>
+        <table class=mhmui-table mhmui-table--stack slotiva-appointments__table role=table>
+          <caption class=mhmui-table__caption mhmui-table__caption--hidden>
+            "#"
+          <thead role=rowgroup>
+            <tr role=row>
+              <th aria-sort class=mhmui-table__th mhmui-table__th--sortable role=columnheader>
+                <button class=mhmui-table__sort type=button>
+                  "#"
+                  <svg aria-hidden class=mhmui-table__sort-icon mhmui-table__sort-icon--asc>
+                    <path>
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                <span class=screen-reader-text>
+                  "#"
+          <tbody role=rowgroup>
+            <tr role=row>
+              <td colspan=7 role=cell>
+                "#"
+      <nav aria-label class=mhmui-pagination mhmui-pagination--footer>
+        <span class=mhmui-pagination__summary>
+          "#"
+        <div class=mhmui-pagination__controls>
+          <button class=mhmui-button mhmui-button--secondary mhmui-button--sm mhmui-pagination__button disabled type=button>
+            <span aria-hidden>
+              "#"
+            "#"
+          <span class=mhmui-pagination__status>
+            "#"
+            "#"
+            "#"
+            "#"
+          <button class=mhmui-button mhmui-button--secondary mhmui-button--sm mhmui-pagination__button disabled type=button>
+            "#"
+            <span aria-hidden>
+              "#"
+    <p class=slotiva-muted>
+      "#"
+"
+`;
+
+exports[`renders_identically_without_filters list loading and empty states: loading 1`] = `
+"<div>
+  <div class=slotiva-appointments>
+    <div class=mhmui-page-header>
+      <div class=mhmui-page-header__title-row>
+        <h1 class=mhmui-page-header__title>
+          "#"
+        <div class=mhmui-page-header__actions>
+          <a class=mhmui-button mhmui-button--secondary mhmui-button--md>
+            "#"
+          <button class=mhmui-button mhmui-button--primary mhmui-button--md type=button>
+            "#"
+    <div class=mhmui-stats-grid mhmui-stats-grid--pairs>
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-calendar>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-calendar-alt>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-clock>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+      <div class=mhmui-stat-card>
+        <span aria-hidden class=dashicons dashicons-store>
+        <div class=mhmui-stat-card__body>
+          <p class=mhmui-stat-card__label>
+            "#"
+          <p class=mhmui-stat-card__value>
+            "#"
+    <nav aria-label class=mhmui-tabs mhmui-tabs--underline>
+      <a class=mhmui-tabs__tab>
+        "#"
+      <a aria-current class=mhmui-tabs__tab mhmui-tabs__tab--current>
+        "#"
+      <a class=mhmui-tabs__tab>
+        "#"
+      <a class=mhmui-tabs__tab>
+        "#"
+    <div class=mhmui-table-card>
+      <div class=mhmui-table-wrap mhmui-table-wrap--stack>
+        <table class=mhmui-table mhmui-table--stack slotiva-appointments__table role=table>
+          <caption class=mhmui-table__caption mhmui-table__caption--hidden>
+            "#"
+          <thead role=rowgroup>
+            <tr role=row>
+              <th aria-sort class=mhmui-table__th mhmui-table__th--sortable role=columnheader>
+                <button class=mhmui-table__sort type=button>
+                  "#"
+                  <svg aria-hidden class=mhmui-table__sort-icon mhmui-table__sort-icon--asc>
+                    <path>
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                "#"
+              <th role=columnheader>
+                <span class=screen-reader-text>
+                  "#"
+          <tbody role=rowgroup>
+            <tr role=row>
+              <td colspan=7 role=cell>
+                "#"
+      <nav aria-label class=mhmui-pagination mhmui-pagination--footer>
+        <span class=mhmui-pagination__summary>
+          "#"
+        <div class=mhmui-pagination__controls>
+          <button class=mhmui-button mhmui-button--secondary mhmui-button--sm mhmui-pagination__button disabled type=button>
+            <span aria-hidden>
+              "#"
+            "#"
+          <span class=mhmui-pagination__status>
+            "#"
+            "#"
+            "#"
+            "#"
+          <button class=mhmui-button mhmui-button--secondary mhmui-button--sm mhmui-pagination__button disabled type=button>
+            "#"
+            <span aria-hidden>
+              "#"
+    <p class=slotiva-muted>
+      "#"
+"
+`;

@@ -1,0 +1,26 @@
+# PHPStan seviye 6, taban dosyası yok. Koşu: composer phpstan
+parameters:
+	level: 6
+	paths:
+		- mhm-slotiva.php
+		- src
+	excludePaths:
+		- vendor
+	bootstrapFiles:
+		- tests/phpstan-bootstrap.php
+	scanFiles:
+		- vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+		- vendor/php-stubs/woocommerce-stubs/woocommerce-packages-stubs.php
+		- vendor/mhm/ui-core/register.php
+		- vendor/mhm/ui-core/bootstrap.php
+	treatPhpDocTypesAsCertain: false
+	ignoreErrors:
+		# Action Scheduler (woocommerce/packages/action-scheduler/functions.php:267-279, :312-328): as_unschedule_action
+		# süzgeci yalnız `is_array( $args )` iken uygular. null = herhangi bir argüman (yetim yinelenen işler argümanlı
+		# olabilir); array() yalnız argümansız işleri eşler. Stub tipi (array) çalışma zamanından dardır.
+		# EN: null = any args; array() would only match argless jobs.
+		-
+			message: '#^Parameter \#2 \$args of function as_unschedule_all_actions expects array, null given\.$#'
+			identifier: argument.type
+			path: src/Lifecycle/OrphanJobs.php
+			count: 1

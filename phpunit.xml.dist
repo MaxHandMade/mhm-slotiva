@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<phpunit
+	bootstrap="tests/bootstrap.php"
+	colors="true"
+	beStrictAboutTestsThatDoNotTestAnything="true"
+>
+	<testsuites>
+		<testsuite name="mhm-slotiva">
+			<directory suffix="Test.php">./tests/</directory>
+			<!-- Kapı testleri WordPress'siz koşar ve derlenmiş build/ + ZIP ister: ayrı takım. -->
+			<exclude>./tests/Tools</exclude>
+		</testsuite>
+		<testsuite name="gates">
+			<directory suffix="Test.php">./tests/Tools</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>
